@@ -7,12 +7,17 @@ import { ViajesModule } from './viajes/viajes.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      process.env.URL as string
-
-    ),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('URL'),
+      }),
+      inject: [ConfigService],
+    }),
     ViajesModule,
-    ConfigModule.forRoot()
   ],
   controllers: [AppController],
   providers: [AppService],
