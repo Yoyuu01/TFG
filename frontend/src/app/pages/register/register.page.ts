@@ -33,7 +33,6 @@ export class RegisterPage implements OnInit {
   contraseña: string = '';
   confirmarContraseña: string = '';
   telefono: string = '';
-  rol: string = '';
   
   constructor(private http: HttpClient) {}
 

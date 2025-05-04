@@ -17,9 +17,6 @@ import {
   IonLabel
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
-import { addIcons } from 'ionicons';
-import { logInOutline, personAddOutline } from 'ionicons/icons';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
