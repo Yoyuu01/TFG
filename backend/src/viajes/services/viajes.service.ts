@@ -194,4 +194,24 @@ export class ViajesService {
             data: aerolineas
         };
     }
+
+    // Método para verificar usuario
+    async verificarUsuario(credenciales: { email: string, contrasena_hash: string }): Promise<any> {
+        const usuario = await this.usuarioModel.findOne({
+            email: credenciales.email,
+            contrasena_hash: credenciales.contrasena_hash
+        }).exec();
+
+        if (!usuario) {
+            throw new Error('Credenciales inválidas');
+        }
+
+        return {
+            id: usuario._id,
+            nombre: usuario.nombre,
+            email: usuario.email,
+            rol: usuario.rol,
+            telefono: usuario.telefono
+        };
+    }
 }

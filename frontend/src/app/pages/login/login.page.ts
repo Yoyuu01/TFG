@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonButton, IonItem, IonLabel, IonList } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonButton, IonItem, IonLabel, IonList, IonButtons, IonIcon } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +14,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -19,11 +23,39 @@ import { RouterModule } from '@angular/router';
     IonButton,
     IonItem,
     IonLabel,
-    IonList
+    IonList,
+    IonButtons,
+    IonIcon
   ]
 })
 export class LoginPage implements OnInit {
-  constructor() {}
+  email: string = '';
+  contrasena: string = '';
+
+  constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {}
+
+  entrar() {
+    const credenciales = {
+      email: this.email,
+      contrasena_hash: this.contrasena
+    };
+
+    this.http.post('http://localhost:3000/api/v1/viajes/usuarios/verificar', credenciales)
+      .subscribe({
+        next: (res: any) => {
+          if (res.data) {
+            localStorage.setItem('usuario', JSON.stringify(res.data));
+            this.router.navigate(['/inicio']);
+          } else {
+            alert('Usuario o contraseña incorrectos');
+          }
+        },
+        error: (err) => {
+          console.error('Error completo:', err);
+          alert('Error al iniciar sesión: ' + (err.error?.message || err.message));
+        }
+      });
+  }
 }

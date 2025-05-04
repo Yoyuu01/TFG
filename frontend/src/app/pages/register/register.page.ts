@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -30,16 +31,21 @@ import { FormsModule } from '@angular/forms';
 export class RegisterPage implements OnInit {
   nombre: string = '';
   email: string = '';
-  contraseña: string = '';
-  confirmarContraseña: string = '';
+  contrasena: string = '';
+  confirmarContrasena: string = '';
   telefono: string = '';
   
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {}
 
   registrarUsuario() {
-    if (this.contraseña !== this.confirmarContraseña) {
+    if (!this.nombre || !this.email || !this.contrasena || !this.confirmarContrasena || !this.telefono) {
+      alert('Por favor, rellena todos los campos');
+      return;
+    }
+
+    if (this.contrasena !== this.confirmarContrasena) {
       alert('Las contraseñas no coinciden');
       return;
     }
@@ -47,9 +53,9 @@ export class RegisterPage implements OnInit {
     const usuario = {
       nombre: this.nombre,
       email: this.email,
-      contraseña_hash: this.contraseña,
+      contrasena_hash: this.contrasena,
       telefono: this.telefono,
-      rol: this.rol,
+      rol: 'cliente',
       fecha_registro: new Date().toISOString()
     };
 
@@ -57,9 +63,10 @@ export class RegisterPage implements OnInit {
       .subscribe({
         next: (res) => {
           alert('Usuario registrado correctamente');
-          // Redirigir o limpiar formulario si es necesario
+          this.router.navigate(['/login']);
         },
         error: (err) => {
+          console.error('Error completo:', err);
           alert('Error al registrar usuario: ' + (err.error?.message || err.message));
         }
       });

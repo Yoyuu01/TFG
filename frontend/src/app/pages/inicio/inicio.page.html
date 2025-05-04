@@ -30,13 +30,40 @@
     </ion-toolbar>
   </ion-header>
 
-    <div class="container">
+  <ion-content [fullscreen]="true">
+    <div class="hero-section">
+      <h1>Descubre el mundo con EuroJet</h1>
+      <p>Tu próxima aventura comienza aquí</p>
+    </div>
+
+    <div class="features-section">
       <ion-card>
         <ion-card-header>
-          <ion-card-title>Bienvenido a EuroJet</ion-card-title>
+          <ion-icon name="airplane-outline" class="feature-icon"></ion-icon>
+          <ion-card-title>Vuelos Directos</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>Tu agencia de viajes de confianza</p>
+          Conexiones directas a los mejores destinos de Europa
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-icon name="wallet-outline" class="feature-icon"></ion-icon>
+          <ion-card-title>Mejores Precios</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Garantizamos las tarifas más competitivas del mercado
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-icon name="shield-checkmark-outline" class="feature-icon"></ion-icon>
+          <ion-card-title>Viaja Seguro</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Reservas garantizadas y atención personalizada
         </ion-card-content>
       </ion-card>
     </div>
