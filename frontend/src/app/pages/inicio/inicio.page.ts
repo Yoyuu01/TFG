@@ -23,6 +23,9 @@ import {
   shieldCheckmarkOutline,
   arrowBackOutline
 } from 'ionicons/icons';
+import { ViajesService, Vuelo } from 'src/app/services/viajes.service';
+import { OpinionesService, Opinion } from 'src/app/services/opiniones.service';
+import { UsuariosService,Usuario } from'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-inicio',
@@ -46,7 +49,15 @@ import {
   ]
 })
 export class InicioPage {
-  constructor() {
+  vuelos: Vuelo[] = [];
+  opiniones: Opinion[] = [];
+  usuarios: Usuario[] = [];
+
+  constructor(
+    private viajesService: ViajesService,
+    private opinionesService: OpinionesService,
+    private usuariosService: UsuariosService
+  ) {
     addIcons({ 
       'log-in-outline': logInOutline,
       'person-add-outline': personAddOutline,
@@ -55,5 +66,49 @@ export class InicioPage {
       'shield-checkmark-outline': shieldCheckmarkOutline,
       'arrow-back-outline': arrowBackOutline
     });
+  }
+
+  ngOnInit() {
+    this.viajesService.getVuelos().subscribe({
+      next: (res: any) => {
+        if (res.data && res.data.length > 0) {
+          this.vuelos = res.data;
+        }
+      },
+      error: (err) => {
+        console.error('Error al obtener los vuelos:', err);
+      }
+    });
+
+    this.opinionesService.getOpiniones().subscribe({
+      next: (res: any) => {
+        if (res.data && res.data.length > 0) {
+          this.opiniones = res.data;
+        }
+      },
+      error: (err) => {
+        console.error('Error al obtener las opiniones:', err);
+      }
+    });
+
+    this.usuariosService.getUsuarios().subscribe({
+      next: (res: any) => {
+        if (res.data && res.data.length > 0) {
+          this.usuarios = res.data;
+        }
+      },
+      error: (err) => {
+        console.error('Error al obtener los usuarios:', err);
+      }
+    });
+  }
+
+  getNombreUsuario(id: string): string {
+    const usuario = this.usuarios.find(u => u._id === id);
+    return usuario ? usuario.nombre : 'Usuario desconocido';
+  }
+
+  getEstrellas(puntuacion: number): number[] {
+    return Array(5).fill(0).map((_, i) => i < puntuacion ? 1 : 0);
   }
 }

@@ -36,9 +36,66 @@
 
     <!-- Aquí puedes añadir el contenido principal de tu página -->
     <div class="main-content">
-      <!-- Contenido principal -->
+      <div class="container">
+        @if (vuelos.length > 0) {
+          <div *ngFor="let v of vuelos" class="viaje-card viaje-horizontal">
+            <div class="viaje-col aerolinea-col">
+              <ion-icon name="airplane-outline" class="icono-viaje"></ion-icon>
+              <span class="aerolinea-nombre">{{ v.aerolinea }}</span>
+            </div>
+            <div class="viaje-col horario-col">
+              <div class="horario-bloque">
+                <span class="hora">{{ v.hora_salida }}</span>
+                <span class="ciudad">{{ v.origen }}</span>
+              </div>
+              <div class="trayecto-horizontal">
+                <span class="duracion">Directo</span>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+              <div class="horario-bloque">
+                <span class="hora">{{ v.hora_llegada }}</span>
+                <span class="ciudad">{{ v.destino }}</span>
+              </div>
+            </div>
+            <div class="viaje-col precio-col">
+              <span class="precio">{{ v.precio | currency:'EUR' }}</span>
+              <button class="ver-vuelo-btn">Ver vuelo</button>
+            </div>
+          </div>
+        } @else {
+          <div class="viaje-card">
+            <p>No hay viajes disponibles.</p>
+          </div>
+        }
+      </div>
     </div>
 
+    <div class="opiniones-section">
+      <h2>Opiniones de nuestros usuarios</h2>
+      <div *ngIf="opiniones && opiniones.length > 0; else noOpiniones">
+        <div class="opiniones-list">
+          <div *ngFor="let op of opiniones; trackBy: trackByOpinionId" class="opinion-card">
+            <div class="opinion-header">
+              <span class="opinion-usuario">{{ getNombreUsuario(op.usuario_id) }}</span>
+              <span class="opinion-estrellas">
+                <ng-container *ngFor="let estrella of getEstrellas(op.puntuacion); let i = index">
+                  <ion-icon [name]="estrella ? 'star' : 'star-outline'" class="estrella"></ion-icon>
+                </ng-container>
+              </span>
+            </div>
+            <div class="opinion-comentario">
+              "{{ op.comentario }}"
+            </div>
+            <div class="opinion-fecha">
+              {{ op.fecha | date:'mediumDate' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noOpiniones>
+        <p>No hay opiniones aún.</p>
+      </ng-template>
+    </div>
     <footer class="app-footer">
       <div class="footer-features">
         <div class="feature-item">
