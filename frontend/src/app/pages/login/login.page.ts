@@ -1,10 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonButton, IonItem, IonLabel, IonList, IonButtons, IonIcon } from '@ionic/angular/standalone';
+import { Component } from '@angular/core';
+import { 
+  IonHeader, 
+  IonToolbar, 
+  IonTitle, 
+  IonContent, 
+  IonInput, 
+  IonButton, 
+  IonItem, 
+  IonLabel, 
+  IonList, 
+  IonButtons, 
+  IonIcon 
+} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { addIcons } from 'ionicons';
+import { 
+  logInOutline, 
+  personAddOutline, 
+  airplaneOutline, 
+  walletOutline, 
+  shieldCheckmarkOutline,
+  arrowBackOutline
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-login',
@@ -28,13 +49,20 @@ import { HttpClient } from '@angular/common/http';
     IonIcon
   ]
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
   email: string = '';
   contrasena: string = '';
 
-  constructor(private router: Router, private http: HttpClient) {}
-
-  ngOnInit() {}
+  constructor(private http: HttpClient, private router: Router) {
+    addIcons({ 
+      'log-in-outline': logInOutline,
+      'person-add-outline': personAddOutline,
+      'airplane-outline': airplaneOutline,
+      'wallet-outline': walletOutline,
+      'shield-checkmark-outline': shieldCheckmarkOutline,
+      'arrow-back-outline': arrowBackOutline
+    });
+  }
 
   entrar() {
     const credenciales = {
@@ -42,7 +70,7 @@ export class LoginPage implements OnInit {
       contrasena_hash: this.contrasena
     };
 
-    this.http.post('http://localhost:3000/api/v1/viajes/usuarios/verificar', credenciales)
+    this.http.post('http://localhost:3000/api/v1/viajes/usuarios', credenciales)
       .subscribe({
         next: (res: any) => {
           if (res.data) {

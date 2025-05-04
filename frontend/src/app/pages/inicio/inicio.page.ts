@@ -4,10 +4,6 @@ import {
   IonToolbar, 
   IonTitle, 
   IonContent, 
-  IonCard, 
-  IonCardHeader, 
-  IonCardTitle, 
-  IonCardContent,
   IonMenu,
   IonButtons,
   IonMenuButton,
@@ -24,7 +20,8 @@ import {
   personAddOutline, 
   airplaneOutline, 
   walletOutline, 
-  shieldCheckmarkOutline 
+  shieldCheckmarkOutline,
+  arrowBackOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -39,10 +36,6 @@ import {
     IonToolbar,
     IonTitle,
     IonContent,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardContent,
     IonMenu,
     IonButtons,
     IonMenuButton,
@@ -59,7 +52,8 @@ export class InicioPage {
       'person-add-outline': personAddOutline,
       'airplane-outline': airplaneOutline,
       'wallet-outline': walletOutline,
-      'shield-checkmark-outline': shieldCheckmarkOutline
+      'shield-checkmark-outline': shieldCheckmarkOutline,
+      'arrow-back-outline': arrowBackOutline
     });
   }
 }
