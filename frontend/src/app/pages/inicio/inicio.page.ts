@@ -1,6 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
+import { 
+  IonHeader, 
+  IonToolbar, 
+  IonTitle, 
+  IonContent, 
+  IonCard, 
+  IonCardHeader, 
+  IonCardTitle, 
+  IonCardContent,
+  IonMenu,
+  IonButtons,
+  IonMenuButton,
+  IonList,
+  IonItem,
+  IonIcon,
+  IonLabel
+} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
+import { addIcons } from 'ionicons';
+import { logInOutline, personAddOutline } from 'ionicons/icons';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -9,6 +28,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -16,11 +36,20 @@ import { CommonModule } from '@angular/common';
     IonCard,
     IonCardHeader,
     IonCardTitle,
-    IonCardContent
+    IonCardContent,
+    IonMenu,
+    IonButtons,
+    IonMenuButton,
+    IonList,
+    IonItem,
+    IonIcon,
+    IonLabel
   ]
 })
 export class InicioPage implements OnInit {
-  constructor() { }
+  constructor() {
+    addIcons({ logInOutline, personAddOutline });
+  }
 
   ngOnInit() {
   }

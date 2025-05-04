@@ -27,3 +27,41 @@
     }
   }
 }
+
+.menu-button {
+  margin: 10px 0;
+  border-radius: 10px;
+  --background: transparent;
+  --background-hover: rgba(var(--ion-color-primary-rgb), 0.1);
+  
+  ion-icon {
+    color: var(--ion-color-primary);
+  }
+  
+  ion-label {
+    font-weight: 500;
+  }
+
+  &:hover {
+    --background: rgba(var(--ion-color-primary-rgb), 0.1);
+    transition: all 0.3s ease;
+  }
+}
+
+ion-menu {
+  --width: 250px;
+  
+  ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --border-radius: 10px;
+    margin: 8px 0;
+    --background: transparent;
+    
+    &::part(native) {
+      border: 1px solid var(--ion-color-medium-shade);
+      box-shadow: none;
+      background: transparent;
+    }
+  }
+}

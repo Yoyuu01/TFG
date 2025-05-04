@@ -12,14 +12,12 @@ export class vuelosDto {
 
 export class usuariosDto {
     _id: string;
-    origen: string;
-    destino: string;
-    fecha_salida: string;
-    hora_salida: string;
-    hora_llegada: string;
-    precio: number;
-    aerolinea: string;
-    plazas_disponibles: number;
+    nombre: string;
+    email: string;
+    contrasena_hash: string;
+    telefono?: string;
+    rol: string;
+    fecha_registro: string;
 }
 
 export class reservasDto {
