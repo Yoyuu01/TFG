@@ -111,4 +111,8 @@ export class InicioPage {
   getEstrellas(puntuacion: number): number[] {
     return Array(5).fill(0).map((_, i) => i < puntuacion ? 1 : 0);
   }
+
+  trackByOpinionId(index: number, opinion: Opinion): string {
+    return opinion._id;
+  }
 }

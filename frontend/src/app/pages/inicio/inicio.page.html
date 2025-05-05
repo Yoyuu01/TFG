@@ -59,7 +59,7 @@
             </div>
             <div class="viaje-col precio-col">
               <span class="precio">{{ v.precio | currency:'EUR' }}</span>
-              <button class="ver-vuelo-btn">Ver vuelo</button>
+              <button class="ver-vuelo-btn" [routerLink]="['/detalles', v._id]">Ver vuelo</button>
             </div>
           </div>
         } @else {

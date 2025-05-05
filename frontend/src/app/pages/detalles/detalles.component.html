@@ -1,0 +1,69 @@
+<ion-menu contentId="main-content" side="end">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item button class="menu-button" [routerLink]="['/login']">
+        <ion-icon slot="start" name="log-in-outline"></ion-icon>
+        <ion-label>Iniciar Sesión</ion-label>
+      </ion-item>
+      <ion-item button class="menu-button" [routerLink]="['/register']">
+        <ion-icon slot="start" name="person-add-outline"></ion-icon>
+        <ion-label>Registrarse</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>EuroJet</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true">
+    <div class="hero-section">
+      <h1>Detalles de tu vuelo</h1>
+      <p>Consulta la información de tu viaje seleccionado</p>
+    </div>
+    <div class="main-content">
+      <div class="container">
+        <div *ngIf="vuelo; else cargando" class="viaje-card viaje-horizontal">
+          <div class="viaje-col aerolinea-col">
+            <ion-icon name="airplane-outline" class="icono-viaje"></ion-icon>
+            <span class="aerolinea-nombre">{{ vuelo.aerolinea }}</span>
+          </div>
+          <div class="viaje-col horario-col">
+            <div class="horario-bloque">
+              <span class="hora">{{ vuelo.hora_salida }}</span>
+              <span class="ciudad">{{ vuelo.origen }}</span>
+            </div>
+            <div class="trayecto-horizontal">
+              <span class="duracion">Directo</span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+            <div class="horario-bloque">
+              <span class="hora">{{ vuelo.hora_llegada }}</span>
+              <span class="ciudad">{{ vuelo.destino }}</span>
+            </div>
+          </div>
+          <div class="viaje-col precio-col">
+            <span class="precio">{{ vuelo.precio | currency:'EUR' }}</span>
+          </div>
+        </div>
+        <ng-template #cargando>
+          <div class="viaje-card">
+            <p>Cargando información del vuelo...</p>
+          </div>
+        </ng-template>
+        <button class="volver-btn" (click)="volver()">Volver</button>
+      </div>
+    </div>
+  </ion-content>
+</div>
