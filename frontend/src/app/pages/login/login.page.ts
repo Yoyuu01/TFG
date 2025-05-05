@@ -70,11 +70,12 @@ export class LoginPage {
       contrasena_hash: this.contrasena
     };
 
-    this.http.post('http://localhost:3000/api/v1/viajes/usuarios', credenciales)
+    this.http.post('http://localhost:3000/api/v1/viajes/usuarios/login', credenciales)
       .subscribe({
         next: (res: any) => {
           if (res.data) {
             localStorage.setItem('usuario', JSON.stringify(res.data));
+            alert('Bienvenido, ' + (res.data.nombre || 'usuario') + '!');
             this.router.navigate(['/inicio']);
           } else {
             alert('Usuario o contraseña incorrectos');

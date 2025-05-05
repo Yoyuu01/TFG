@@ -657,4 +657,21 @@ export class ViajesController {
             });
         }
     }
+
+
+@Post('usuarios/login')
+    async loginUsuario(@Body() credenciales: { email: string, contrasena_hash: string }) {
+     try {
+            const usuario = await this.viajesService.verificarUsuario(credenciales);
+         return {
+             status: 'OK',
+             data: usuario
+         };
+        } catch (e: any) {
+            return new BadRequestException({
+             status: 'error',
+             message: e.message,
+            });
+        }
+    }
 }
