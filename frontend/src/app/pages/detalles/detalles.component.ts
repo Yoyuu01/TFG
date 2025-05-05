@@ -78,4 +78,7 @@ export class DetallesComponent implements OnInit {
   volver() {
     this.location.back();
   }
+  reservar() {
+    // Función vacía para compilar
+  }
 }
