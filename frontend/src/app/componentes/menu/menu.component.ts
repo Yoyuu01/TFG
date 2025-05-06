@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon } from '@ionic/angular/standalone';
+import { IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonIcon, IonLabel } from '@ionic/angular/standalone';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -13,7 +13,10 @@ import { RouterModule } from '@angular/router';
     IonToolbar,
     IonTitle,
     IonContent,
+    IonList,
+    IonItem,
     IonIcon,
+    IonLabel,
     RouterModule
   ]
 })
