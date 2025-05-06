@@ -25,6 +25,7 @@ import {
   arrowBackOutline,
   arrowForwardOutline
 } from 'ionicons/icons';
+import { HeaderComponent } from '../../componentes/header/header.component';
 
 @Component({
   selector: 'app-detalles',
@@ -41,10 +42,7 @@ import {
     IonButtons,
     IonIcon,
     IonMenuButton,
-    IonMenu,
-    IonList,
-    IonItem,
-    IonLabel
+    HeaderComponent
   ]
 })
 export class DetallesComponent implements OnInit {

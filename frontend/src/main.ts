@@ -6,10 +6,11 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { provideHttpClient } from '@angular/common/http';
 import { addIcons } from 'ionicons';
-import { starOutline } from 'ionicons/icons';
+import { starOutline, star } from 'ionicons/icons';
 
 addIcons({
-  'star-outline': starOutline
+  'star-outline': starOutline,
+  'star': star
 });
 
 bootstrapApplication(AppComponent, {

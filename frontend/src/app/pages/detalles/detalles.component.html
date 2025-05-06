@@ -1,23 +1,10 @@
-<ion-menu contentId="main-content" side="end">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menú</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <ion-list>
-      <ion-item button class="menu-button" [routerLink]="['/login']">
-        <ion-icon slot="start" name="log-in-outline"></ion-icon>
-        <ion-label>Iniciar Sesión</ion-label>
-      </ion-item>
-      <ion-item button class="menu-button" [routerLink]="['/register']">
-        <ion-icon slot="start" name="person-add-outline"></ion-icon>
-        <ion-label>Registrarse</ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
+<div class="ion-page" id="main-content">
+  <app-header></app-header>
+  <ion-content [fullscreen]="true">
+    <div class="hero-section">
+      <h1>Descubre el mundo con EuroJet</h1>
+      <p>Tu próxima aventura comienza aquí</p>
+    </div>
 <div class="ion-page" id="main-content">
   <ion-header [translucent]="true">
     <ion-toolbar>
