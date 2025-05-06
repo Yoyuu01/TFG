@@ -41,20 +41,21 @@
           </div>
           <div class="viaje-col horario-col">
             <div class="horario-bloque">
-              <span class="hora">{{ vuelo.hora_salida }}</span>
-              <span class="ciudad">{{ vuelo.origen }}</span>
+              <span class="hora">{{ vuelo?.ida?.hora_salida }}</span>
+              <span class="ciudad">{{ vuelo?.origen }}</span>
             </div>
             <div class="trayecto-horizontal">
               <span class="duracion">Directo</span>
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </div>
             <div class="horario-bloque">
-              <span class="hora">{{ vuelo.hora_llegada }}</span>
-              <span class="ciudad">{{ vuelo.destino }}</span>
+              <span class="hora">{{ vuelo?.ida?.hora_llegada }}</span>
+              <span class="ciudad">{{ vuelo?.destino }}</span>
             </div>
           </div>
           <div class="viaje-col precio-col">
-            <span class="precio">{{ vuelo.precio | currency:'EUR' }}</span>
+            <span class="precio">{{ vuelo?.ida?.precio | currency:'EUR' }}</span>
+            <!-- Para la vuelta, puedes mostrar los datos de vuelo.vuelta de forma similar -->
           </div>
         </div>
         <ng-template #cargando>

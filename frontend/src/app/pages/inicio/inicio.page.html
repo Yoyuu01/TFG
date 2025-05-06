@@ -45,7 +45,7 @@
             </div>
             <div class="viaje-col horario-col">
               <div class="horario-bloque">
-                <span class="hora">{{ v.hora_salida }}</span>
+                <span class="hora">{{ v.ida.hora_salida }}</span>
                 <span class="ciudad">{{ v.origen }}</span>
               </div>
               <div class="trayecto-horizontal">
@@ -53,12 +53,12 @@
                 <ion-icon name="arrow-forward-outline"></ion-icon>
               </div>
               <div class="horario-bloque">
-                <span class="hora">{{ v.hora_llegada }}</span>
+                <span class="hora">{{ v.ida.hora_llegada }}</span>
                 <span class="ciudad">{{ v.destino }}</span>
               </div>
             </div>
             <div class="viaje-col precio-col">
-              <span class="precio">{{ v.precio | currency:'EUR' }}</span>
+              <span class="precio">{{ v.ida.precio | currency:'EUR' }}</span>
               <button class="ver-vuelo-btn" [routerLink]="['/detalles', v._id]">Ver vuelo</button>
             </div>
           </div>

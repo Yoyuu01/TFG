@@ -3,16 +3,22 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-export interface Vuelo {
-  _id: string;
-  origen: string;
-  destino: string;
+export interface VueloSegmento {
   fecha_salida: string;
   hora_salida: string;
   hora_llegada: string;
   precio: number;
   aerolinea: string;
   plazas_disponibles: number;
+}
+
+export interface Vuelo {
+  _id: string;
+  origen: string;
+  destino: string;
+  descripcion: string;
+  ida: VueloSegmento;
+  vuelta: VueloSegmento;
 }
 
 @Injectable({
