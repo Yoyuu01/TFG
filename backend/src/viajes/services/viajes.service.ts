@@ -182,7 +182,12 @@ export class ViajesService {
         const aerolineasSet = new Set<string>();
         
         vuelos.forEach(vuelo => {
-            aerolineasSet.add(vuelo.aerolinea);
+            if (vuelo.ida && vuelo.ida.aerolinea) {
+                aerolineasSet.add(vuelo.ida.aerolinea);
+            }
+            if (vuelo.vuelta && vuelo.vuelta.aerolinea) {
+                aerolineasSet.add(vuelo.vuelta.aerolinea);
+            }
         });
         
         const aerolineas = Array.from(aerolineasSet);

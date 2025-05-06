@@ -41,23 +41,11 @@
           <div *ngFor="let v of vuelos" class="viaje-card viaje-horizontal">
             <div class="viaje-col aerolinea-col">
               <ion-icon name="airplane-outline" class="icono-viaje"></ion-icon>
-              <span class="aerolinea-nombre">{{ v.aerolinea }}</span>
-            </div>
-            <div class="viaje-col horario-col">
-              <div class="horario-bloque">
-                <span class="hora">{{ v.ida.hora_salida }}</span>
-                <span class="ciudad">{{ v.origen }}</span>
-              </div>
-              <div class="trayecto-horizontal">
-                <span class="duracion">Directo</span>
-                <ion-icon name="arrow-forward-outline"></ion-icon>
-              </div>
-              <div class="horario-bloque">
-                <span class="hora">{{ v.ida.hora_llegada }}</span>
-                <span class="ciudad">{{ v.destino }}</span>
-              </div>
-            </div>
-            <div class="viaje-col precio-col">
+              <span class="aerolinea-nombre">{{ v.ida.aerolinea }}</span>
+              <span class="hora">{{ v.ida.hora_salida }}</span>
+              <span class="ciudad">{{ v.origen }}</span>
+              <span class="hora">{{ v.ida.hora_llegada }}</span>
+              <span class="ciudad">{{ v.destino }}</span>
               <span class="precio">{{ v.ida.precio | currency:'EUR' }}</span>
               <button class="ver-vuelo-btn" [routerLink]="['/detalles', v._id]">Ver vuelo</button>
             </div>
