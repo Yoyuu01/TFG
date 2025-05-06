@@ -1,16 +1,7 @@
 import { Component } from '@angular/core';
 import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
   IonContent, 
-  IonMenu,
-  IonButtons,
-  IonMenuButton,
-  IonList,
-  IonItem,
-  IonIcon,
-  IonLabel
+  IonIcon
 } from '@ionic/angular/standalone';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -26,6 +17,7 @@ import {
 import { ViajesService, Vuelo } from 'src/app/services/viajes.service';
 import { OpinionesService, Opinion } from 'src/app/services/opiniones.service';
 import { UsuariosService,Usuario } from'src/app/services/usuarios.service';
+import { HeaderComponent } from '../../componentes/header/header.component';
 
 @Component({
   selector: 'app-inicio',
@@ -35,17 +27,9 @@ import { UsuariosService,Usuario } from'src/app/services/usuarios.service';
   imports: [
     CommonModule,
     RouterModule,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
-    IonMenu,
-    IonButtons,
-    IonMenuButton,
-    IonList,
-    IonItem,
     IonIcon,
-    IonLabel
+    HeaderComponent
   ]
 })
 export class InicioPage {

@@ -8,9 +8,7 @@ import {
   IonButton, 
   IonItem, 
   IonLabel, 
-  IonList, 
-  IonButtons, 
-  IonIcon 
+  IonList
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -26,6 +24,7 @@ import {
   shieldCheckmarkOutline,
   arrowBackOutline
 } from 'ionicons/icons';
+import { HeaderComponent } from '../../componentes/header/header.component';
 
 @Component({
   selector: 'app-login',
@@ -36,17 +35,13 @@ import {
     CommonModule,
     RouterModule,
     FormsModule,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     IonInput,
     IonButton,
     IonItem,
     IonLabel,
     IonList,
-    IonButtons,
-    IonIcon
+    HeaderComponent
   ]
 })
 export class LoginPage {

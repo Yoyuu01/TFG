@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonIcon } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,8 @@ import { IonHeader, IonToolbar, IonTitle } from '@ionic/angular/standalone';
   imports: [
     IonHeader,
     IonToolbar,
-    IonTitle
+    IonTitle,
+    IonIcon
   ]
 })
 export class HeaderComponent {}

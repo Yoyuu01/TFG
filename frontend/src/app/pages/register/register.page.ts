@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonButton, IonItem, IonLabel, IonList, IonButtons, IonIcon } from '@ionic/angular/standalone';
+import { IonContent, IonInput, IonButton, IonItem, IonLabel, IonList } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HeaderComponent } from '../../componentes/header/header.component';
 
 @Component({
   selector: 'app-register',
@@ -15,17 +16,13 @@ import { Router } from '@angular/router';
     CommonModule,
     RouterModule,
     FormsModule,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     IonInput,
     IonButton,
     IonItem,
     IonLabel,
     IonList,
-    IonButtons,
-    IonIcon
+    HeaderComponent
   ]
 })
 export class RegisterPage implements OnInit {
