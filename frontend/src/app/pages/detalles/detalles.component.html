@@ -1,11 +1,5 @@
 <div class="ion-page" id="main-content">
   <app-header></app-header>
-  <ion-content [fullscreen]="true">
-    <div class="hero-section">
-      <h1>Descubre el mundo con EuroJet</h1>
-      <p>Tu próxima aventura comienza aquí</p>
-    </div>
-<div class="ion-page" id="main-content">
   <ion-header [translucent]="true">
     <ion-toolbar>
       <ion-title>EuroJet</ion-title>
@@ -24,25 +18,46 @@
         <div *ngIf="vuelo; else cargando" class="viaje-card viaje-horizontal">
           <div class="viaje-col aerolinea-col">
             <ion-icon name="airplane-outline" class="icono-viaje"></ion-icon>
-            <span class="aerolinea-nombre">{{ vuelo.ida.aerolinea }}</span>
+            <span class="aerolinea-nombre">{{ vuelo?.ida?.aerolinea }}</span>
           </div>
           <div class="viaje-col horario-col">
             <div class="horario-bloque">
-              <span class="hora">{{ vuelo.ida.hora_salida }}</span>
-              <span class="ciudad">{{ vuelo.origen }}</span>
+              <span class="hora">{{ vuelo?.ida?.hora_salida }}</span>
+              <span class="ciudad">{{ vuelo?.origen }}</span>
             </div>
             <div class="trayecto-horizontal">
-              <span class="duracion">Directo</span>
               <ion-icon name="arrow-forward-outline"></ion-icon>
             </div>
             <div class="horario-bloque">
-              <span class="hora">{{ vuelo.ida.hora_llegada }}</span>
-              <span class="ciudad">{{ vuelo.destino }}</span>
+              <span class="hora">{{ vuelo?.ida?.hora_llegada }}</span>
+              <span class="ciudad">{{ vuelo?.destino }}</span>
             </div>
           </div>
           <div class="viaje-col precio-col">
-            <span class="precio">{{ vuelo.ida.precio | currency:'EUR' }}</span>
-            <!-- Para la vuelta, puedes mostrar los datos de vuelo.vuelta de forma similar -->
+            <span class="precio">{{ vuelo?.ida?.precio | currency:'EUR' }}</span>
+          </div>
+        </div>
+        <!-- Si hay vuelo de vuelta -->
+        <div *ngIf="vuelo?.vuelta" class="viaje-card viaje-horizontal">
+          <div class="viaje-col aerolinea-col">
+            <ion-icon name="airplane-outline" class="icono-viaje"></ion-icon>
+            <span class="aerolinea-nombre">{{ vuelo?.vuelta?.aerolinea }}</span>
+          </div>
+          <div class="viaje-col horario-col">
+            <div class="horario-bloque">
+              <span class="hora">{{ vuelo?.vuelta?.hora_salida }}</span>
+              <span class="ciudad">{{ vuelo?.destino }}</span>
+            </div>
+            <div class="trayecto-horizontal">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </div>
+            <div class="horario-bloque">
+              <span class="hora">{{ vuelo?.vuelta?.hora_llegada }}</span>
+              <span class="ciudad">{{ vuelo?.origen }}</span>
+            </div>
+          </div>
+          <div class="viaje-col precio-col">
+            <span class="precio">{{ vuelo?.vuelta?.precio | currency:'EUR' }}</span>
           </div>
         </div>
         <ng-template #cargando>
@@ -51,6 +66,7 @@
           </div>
         </ng-template>
         <button class="reservar-btn" (click)="reservar()">Reservar</button>
+        <button class="volver-btn" (click)="volver()">Volver</button>
       </div>
     </div>
   </ion-content>
