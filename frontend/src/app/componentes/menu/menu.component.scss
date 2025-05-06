@@ -1,0 +1,40 @@
+ion-menu {
+  --width: 260px;
+}
+
+ion-toolbar {
+  background: linear-gradient(90deg, #101c2c 60%, #1e3c72 100%);
+  color: #eaf6fb;
+}
+
+ion-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+ion-button {
+  font-size: 1.1rem;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 8px rgba(30,60,114,0.08);
+}
+
+ion-icon {
+  color: #fff;
+}
+
+ion-item {
+  --background: transparent;
+  --color: #101c2c;
+  font-size: 1.1rem;
+}
+
+ion-icon {
+  color: #1e3c72;
+}

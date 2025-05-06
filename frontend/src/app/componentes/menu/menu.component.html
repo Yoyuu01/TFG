@@ -1,0 +1,19 @@
+<ion-menu contentId="main-content" side="end">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <div class="menu-buttons">
+      <ion-button expand="block" fill="solid" color="secondary" [routerLink]="['/login']">
+        <ion-icon slot="start" name="log-in-outline"></ion-icon>
+        Iniciar Sesión
+      </ion-button>
+      <ion-button expand="block" fill="solid" color="tertiary" [routerLink]="['/register']">
+        <ion-icon slot="start" name="person-add-outline"></ion-icon>
+        Registrarse
+      </ion-button>
+    </div>
+  </ion-content>
+</ion-menu>
