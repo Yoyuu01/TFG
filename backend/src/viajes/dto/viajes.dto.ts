@@ -1,13 +1,19 @@
-export class vuelosDto {
-    _id: string;
-    origen: string;
-    destino: string;
+export class VueloSegmentoDto {
     fecha_salida: string;
     hora_salida: string;
     hora_llegada: string;
     precio: number;
     aerolinea: string;
     plazas_disponibles: number;
+}
+
+export class vuelosDto {
+    _id: string;
+    origen: string;
+    destino: string;
+    descripcion: string;
+    ida: VueloSegmentoDto;
+    vuelta: VueloSegmentoDto;
 }
 
 export class usuariosDto {
