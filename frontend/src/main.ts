@@ -5,6 +5,12 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { provideHttpClient } from '@angular/common/http';
+import { addIcons } from 'ionicons';
+import { starOutline } from 'ionicons/icons';
+
+addIcons({
+  'star-outline': starOutline
+});
 
 bootstrapApplication(AppComponent, {
   providers: [
