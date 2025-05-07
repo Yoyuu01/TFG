@@ -18,15 +18,25 @@
     <h2 class="titulo-vuelos">Vuelos disponibles</h2>
     @if (vuelosFiltrados.length > 0) {
       <div class="vuelos-grid">
-        <div *ngFor="let v of vuelosFiltrados" class="viaje-card viaje-horizontal">
-          <div class="viaje-col aerolinea-col">
-            <ion-icon name="airplane-outline" class="icono-viaje"></ion-icon>
-            <span class="aerolinea-nombre">{{ v.ida.aerolinea }}</span>
-            <span class="hora">{{ v.ida.hora_salida }}</span>
-            <span class="ciudad">{{ v.origen }}</span>
-            <span class="hora">{{ v.ida.hora_llegada }}</span>
-            <span class="ciudad">{{ v.destino }}</span>
-            <span class="precio">{{ v.ida.precio | currency:'EUR' }}</span>
+        <div *ngFor="let v of vuelosFiltrados" class="viaje-card flight-card-horizontal">
+          <div class="flight-icon-col">
+            <ion-icon name="airplane-outline"></ion-icon>
+            <div class="flight-airline">{{ v.ida.aerolinea }}</div>
+          </div>
+          <div class="flight-info-col">
+            <div class="flight-row">
+              <div class="flight-label">Salida</div>
+              <div class="flight-hour">{{ v.ida.hora_salida }}</div>
+              <div class="flight-city">{{ v.origen }}</div>
+            </div>
+            <div class="flight-row">
+              <div class="flight-label">Llegada</div>
+              <div class="flight-hour">{{ v.ida.hora_llegada }}</div>
+              <div class="flight-city">{{ v.destino }}</div>
+            </div>
+          </div>
+          <div class="flight-price-col">
+            <div class="flight-price">{{ v.ida.precio | currency:'EUR' }}</div>
             <button class="ver-vuelo-btn" [routerLink]="['/detalles', v._id]">Ver vuelo</button>
           </div>
         </div>

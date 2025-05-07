@@ -432,62 +432,134 @@ ion-title {
   font-weight: bold;
   color: #3880ff;
 }
+.flight-card-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: #181d29;
+  border-radius: 16px;
+  border: 2px solid #3880ff;
+  box-shadow: 0 2px 12px rgba(10, 35, 66, 0.12);
+  padding: 1.2rem 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  gap: 1.2rem;
+}
+
+.flight-card-horizontal:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(10, 35, 66, 0.18);
+  border-color: #6ec1e4;
+}
+
+.flight-icon-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+  gap: 0.5rem;
+}
+.flight-icon-col ion-icon {
+  color: #3880ff;
+  font-size: 2.5rem;
+}
+.flight-airline {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #eaf6fb;
+  margin-top: 0.3rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.flight-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  flex: 2;
+}
+.flight-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.flight-label {
+  font-size: 1.05rem;
+  color: #b3b3b3;
+  min-width: 70px;
+  font-weight: 600;
+}
+.flight-hour {
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: #eaf6fb;
+  min-width: 90px;
+}
+.flight-city {
+  font-size: 1.1rem;
+  color: #b3b3b3;
+  min-width: 110px;
+}
+
+.flight-price-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  min-width: 120px;
+}
+.flight-price {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #3880ff;
+  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+}
 .ver-vuelo-btn {
   background: #3880ff;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 0.5rem 1.5rem;
-  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.7rem 2rem;
+  font-weight: 700;
   cursor: pointer;
   transition: background 0.2s;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  margin-top: 0.7rem;
+  box-shadow: 0 2px 8px rgba(42, 92, 160, 0.12);
 }
 .ver-vuelo-btn:hover {
   background: #274472;
 }
 
-/* Responsividad */
-@media (max-width: 1100px) {
-  .container {
-    flex-direction: column;
-    gap: 18px;
-    padding: 24px 1vw 16px 1vw;
+@media (max-width: 900px) {
+  .vuelos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.2rem;
+    padding: 0 1vw;
   }
-  .viaje-horizontal {
-    min-width: 0;
-    width: 100%;
-    flex-basis: 100%;
-    padding: 1rem 1vw;
-    gap: 1rem;
-  }
-  .horario-col {
-    gap: 1.5rem;
+  .viaje-card,
+  .flight-card-horizontal {
+    max-width: 98vw;
+    padding: 1.2rem 0.7rem;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 600px) {
-  .container {
-    padding: 8px 0;
-    border-radius: 0;
-    margin: 0;
-    box-shadow: none;
-    background: transparent;
-  }
-  .viaje-horizontal {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 1rem 0.5rem;
+  .vuelos-grid {
+    grid-template-columns: 1fr;
     gap: 0.7rem;
-    min-height: unset;
+    padding: 0;
   }
-  .horario-col {
-    flex-direction: column;
-    gap: 0.7rem;
-  }
-  .precio-col {
-    align-items: flex-start;
-    margin-top: 0.5rem;
+  .viaje-card,
+  .flight-card-horizontal {
+    max-width: 100vw;
+    padding: 1rem 0.3rem;
+    font-size: 0.98rem;
   }
 }
 .opiniones-section {
@@ -596,49 +668,150 @@ ion-title {
 }
 .vuelos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2.5rem;
   width: 100vw;
-  max-width: 100vw;
+  max-width: 1200px;
   margin: 0 auto 2rem auto;
   padding: 0 2vw;
   box-sizing: border-box;
 }
-.opinion-card {
-  min-width: 270px;
-  max-width: 350px;
-  margin: 0 auto;
-  background: #23395d;
-  border-radius: 16px;
-  color: #eaf6fb;
-  padding: 1.2rem 1.5rem;
-  box-shadow: 0 2px 8px rgba(10, 35, 66, 0.08);
+
+.viaje-card,
+.viaje-horizontal,
+.flight-card-horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  background: #181d29;
+  border-radius: 20px;
+  margin-bottom: 0;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 18px rgba(10, 35, 66, 0.13);
+  min-height: 220px;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 420px;
+  font-size: 1.15rem;
+  transition: transform 0.2s, border 0.2s;
+  border: 3.5px solid #3a7ca5;
 }
-.opinion-header {
+
+.viaje-card:hover,
+.viaje-horizontal:hover,
+.flight-card-horizontal:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 10px 28px rgba(10, 35, 66, 0.18);
+  border-color: #6ec1e4;
+}
+
+.flight-icon-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+  gap: 0.5rem;
+}
+.flight-icon-col ion-icon {
+  color: #3880ff;
+  font-size: 2.5rem;
+}
+.flight-airline {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #eaf6fb;
+  margin-top: 0.3rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.flight-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  flex: 2;
+}
+.flight-row {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  gap: 1.5rem;
 }
-.opinion-usuario {
-  color: #3880ff;
-}
-.opinion-estrellas {
-  display: flex;
-  gap: 0.1rem;
-}
-.estrella {
-  color: #ffd700;
-  font-size: 1.2rem;
-}
-.opinion-comentario {
-  margin: 0.5rem 0 0.2rem 0;
-  font-style: italic;
-}
-.opinion-fecha {
-  font-size: 0.9rem;
+.flight-label {
+  font-size: 1.05rem;
   color: #b3b3b3;
+  min-width: 70px;
+  font-weight: 600;
+}
+.flight-hour {
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: #eaf6fb;
+  min-width: 90px;
+}
+.flight-city {
+  font-size: 1.1rem;
+  color: #b3b3b3;
+  min-width: 110px;
+}
+
+.flight-price-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  min-width: 120px;
+}
+.flight-price {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #3880ff;
+  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+}
+.ver-vuelo-btn {
+  background: #3880ff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1.1rem;
+  margin-top: 0.7rem;
+  box-shadow: 0 2px 8px rgba(42, 92, 160, 0.12);
+}
+.ver-vuelo-btn:hover {
+  background: #274472;
+}
+
+@media (max-width: 900px) {
+  .vuelos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.2rem;
+    padding: 0 1vw;
+  }
+  .viaje-card,
+  .flight-card-horizontal {
+    max-width: 98vw;
+    padding: 1.2rem 0.7rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .vuelos-grid {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    padding: 0;
+  }
+  .viaje-card,
+  .flight-card-horizontal {
+    max-width: 100vw;
+    padding: 1rem 0.3rem;
+    font-size: 0.98rem;
+  }
 }
 .opiniones-slider {
   display: flex;
