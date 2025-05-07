@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
 })
 export class ReservasComponent implements OnInit {
   reserva = {
-    usuario_id: '',
+    nombre: '',
     vuelo_id: '',
     vuelo_nombre: '',
     fecha_reserva: '',
@@ -101,7 +101,7 @@ export class ReservasComponent implements OnInit {
 
   crearReserva() {
     // Comprobar si es la primera reserva del usuario
-    this.reservasService.getReservasPorUsuario(this.reserva.usuario_id).subscribe({
+    this.reservasService.getReservasPorUsuario(this.reserva.nombre).subscribe({
       next: (reservas) => {
         if (reservas.length === 0) {
           // Es la primera reserva

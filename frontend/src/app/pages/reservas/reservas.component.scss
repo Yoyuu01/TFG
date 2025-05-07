@@ -112,3 +112,13 @@ body, ion-content {
   align-items: flex-start;
   min-height: 60vh;
 }
+
+.campo-invalido {
+  border: 2px solid #ff4d4f !important;
+  background-color: #2a1a1a !important;
+}
+.mensaje-error {
+  color: #ff4d4f;
+  margin-top: 10px;
+  font-weight: bold;
+}

@@ -7,35 +7,44 @@
     </div>
     <div class="main-content">
       <div class="container">
-        <form (ngSubmit)="crearReserva()" #reservaForm="ngForm" class="reserva-form">
+        <form (ngSubmit)="crearReserva()" #reservaForm="ngForm" class="reserva-form" novalidate>
           <div class="form-group">
-            <label for="usuario_id">Usuario ID:</label>
-            <input type="text" id="usuario_id" name="usuario_id" [(ngModel)]="reserva.usuario_id" required [readonly]="usuarioLogueado">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" [(ngModel)]="reserva.nombre" required
+              [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.nombre}">
           </div>
           <div class="form-group">
             <label for="vuelo_nombre">Vuelo:</label>
-            <input type="text" id="vuelo_nombre" name="vuelo_nombre" [value]="getVueloDisplay()" disabled>
+            <input type="text" id="vuelo_nombre" name="vuelo_nombre" [value]="getVueloDisplay()" disabled
+              [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.vuelo_id}">
           </div>
           <div class="form-group">
             <label for="vuelo_nombre">Aerolínea seleccionada:</label>
-            <input type="text" id="aerolinea" name="aerolinea" [value]="reserva.vuelo_nombre" disabled>
+            <input type="text" id="aerolinea" name="aerolinea" [value]="reserva.vuelo_nombre" disabled
+              [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.vuelo_nombre}">
           </div>
           <div class="form-group">
             <label for="fecha_reserva">Fecha de reserva:</label>
-            <input type="date" id="fecha_reserva" name="fecha_reserva" [(ngModel)]="reserva.fecha_reserva" required>
+            <input type="date" id="fecha_reserva" name="fecha_reserva" [(ngModel)]="reserva.fecha_reserva" required
+              [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.fecha_reserva}">
           </div>
           <div class="form-group">
             <label for="estado">Estado:</label>
-            <input type="text" id="estado" name="estado" [(ngModel)]="reserva.estado" disabled>
+            <input type="text" id="estado" name="estado" [(ngModel)]="reserva.estado" disabled
+              [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.estado}">
           </div>
           <div class="form-group">
             <label for="asiento">Asiento:</label>
-            <input type="text" id="asiento" name="asiento" [(ngModel)]="reserva.asiento" required readonly>
+            <input type="text" id="asiento" name="asiento" [(ngModel)]="reserva.asiento" required readonly
+              [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.asiento}">
           </div>
           <button type="submit" class="reservar-btn">Reservar</button>
           <button type="button" class="reservar-btn" (click)="volverAtras()">Volver</button>
         </form>
         <div *ngIf="mensaje" class="mensaje-reserva">{{ mensaje }}</div>
+        <div *ngIf="reservaForm.submitted && reservaForm.invalid" class="mensaje-error">
+          Por favor, rellena todos los campos obligatorios.
+        </div>
       </div>
     </div>
   </ion-content>
