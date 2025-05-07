@@ -3,22 +3,22 @@
   <ion-content [fullscreen]="true">
     <div class="hero-section">
       <h1>Reserva tu vuelo</h1>
-      <p>Completa los datos para finalizar tu reserva</p>
+      <p>Selecciona un vuelo y completa los datos para finalizar tu reserva</p>
     </div>
     <div class="main-content">
       <div class="container">
         <form (ngSubmit)="crearReserva()" #reservaForm="ngForm" class="reserva-form">
           <div class="form-group">
             <label for="usuario_id">Usuario ID:</label>
-            <input type="text" id="usuario_id" name="usuario_id" [(ngModel)]="reserva.usuario_id" required>
+            <input type="text" id="usuario_id" name="usuario_id" [(ngModel)]="reserva.usuario_id" required [readonly]="usuarioLogueado">
           </div>
           <div class="form-group">
             <label for="vuelo_nombre">Vuelo:</label>
-            <input type="text" id="vuelo_nombre" name="vuelo_nombre" [(ngModel)]="reserva.vuelo_nombre" [value]="reserva.vuelo_nombre" disabled>
+            <input type="text" id="vuelo_nombre" name="vuelo_nombre" [value]="getVueloDisplay()" disabled>
           </div>
           <div class="form-group">
-            <label for="vuelo_id">Vuelo ID:</label>
-            <input type="text" id="vuelo_id" name="vuelo_id" [(ngModel)]="reserva.vuelo_id" required>
+            <label for="vuelo_nombre">Aerolínea seleccionada:</label>
+            <input type="text" id="aerolinea" name="aerolinea" [value]="reserva.vuelo_nombre" disabled>
           </div>
           <div class="form-group">
             <label for="fecha_reserva">Fecha de reserva:</label>
@@ -30,10 +30,12 @@
           </div>
           <div class="form-group">
             <label for="asiento">Asiento:</label>
-            <input type="text" id="asiento" name="asiento" [(ngModel)]="reserva.asiento" required>
+            <input type="text" id="asiento" name="asiento" [(ngModel)]="reserva.asiento" required readonly>
           </div>
           <button type="submit" class="reservar-btn">Reservar</button>
+          <button type="button" class="reservar-btn" (click)="volverAtras()">Volver</button>
         </form>
+        <div *ngIf="mensaje" class="mensaje-reserva">{{ mensaje }}</div>
       </div>
     </div>
   </ion-content>
