@@ -2,15 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ViajesService, Vuelo } from 'src/app/services/viajes.service';
 import { CommonModule } from '@angular/common';
-import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
-  IonContent, 
-  IonButtons, 
-  IonIcon, 
-  IonMenuButton,
-} from '@ionic/angular/standalone';
+import { IonContent, IonIcon } from '@ionic/angular/standalone';
 import { Location } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { addIcons } from 'ionicons';
@@ -32,14 +24,9 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
+    HeaderComponent,
     IonContent,
-    IonButtons,
-    IonIcon,
-    IonMenuButton,
-    HeaderComponent
+    IonIcon
   ]
 })
 export class DetallesComponent implements OnInit {
@@ -49,7 +36,7 @@ export class DetallesComponent implements OnInit {
     private route: ActivatedRoute,
     private viajesService: ViajesService,
     private location: Location,
-    private router: Router // <-- Añade esto
+    private router: Router
   ) {
     addIcons({ 
       'log-in-outline': logInOutline,

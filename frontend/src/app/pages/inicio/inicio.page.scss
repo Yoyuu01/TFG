@@ -598,9 +598,11 @@ ion-title {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
-  width: 100%;
+  width: 100vw;
+  max-width: 100vw;
   margin: 0 auto 2rem auto;
   padding: 0 2vw;
+  box-sizing: border-box;
 }
 .opinion-card {
   min-width: 270px;
