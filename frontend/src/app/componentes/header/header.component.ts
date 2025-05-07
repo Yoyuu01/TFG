@@ -19,7 +19,6 @@ import { MenuComponent } from '../menu/menu.component';
     IonHeader,
     IonToolbar,
     IonTitle,
-    IonIcon,
     IonButtons,
     IonMenuButton,
     RouterModule,
