@@ -18,6 +18,7 @@ import { ViajesService, Vuelo } from 'src/app/services/viajes.service';
 import { OpinionesService, Opinion } from 'src/app/services/opiniones.service';
 import { UsuariosService,Usuario } from'src/app/services/usuarios.service';
 import { HeaderComponent } from '../../componentes/header/header.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-inicio',
@@ -29,13 +30,23 @@ import { HeaderComponent } from '../../componentes/header/header.component';
     RouterModule,
     IonContent,
     IonIcon,
-    HeaderComponent
+    HeaderComponent,
+    FormsModule
   ]
 })
 export class InicioPage {
   vuelos: Vuelo[] = [];
   opiniones: Opinion[] = [];
   usuarios: Usuario[] = [];
+  aerolineaSeleccionada: string = '';
+  get vuelosFiltrados(): Vuelo[] {
+    if (!this.aerolineaSeleccionada) return this.vuelos;
+    return this.vuelos.filter(v => v.ida.aerolinea === this.aerolineaSeleccionada);
+  }
+  get aerolineasDisponibles(): string[] {
+    // Devuelve un array único de aerolíneas disponibles
+    return [...new Set(this.vuelos.map(v => v.ida.aerolinea))];
+  }
 
   constructor(
     private viajesService: ViajesService,

@@ -6,29 +6,36 @@
       <p>Tu próxima aventura comienza aquí</p>
     </div>
 
-    <!-- Aquí puedes añadir el contenido principal de tu página -->
-    <div class="main-content">
-      <div class="container">
-        @if (vuelos.length > 0) {
-          <div *ngFor="let v of vuelos" class="viaje-card viaje-horizontal">
-            <div class="viaje-col aerolinea-col">
-              <ion-icon name="airplane-outline" class="icono-viaje"></ion-icon>
-              <span class="aerolinea-nombre">{{ v.ida.aerolinea }}</span>
-              <span class="hora">{{ v.ida.hora_salida }}</span>
-              <span class="ciudad">{{ v.origen }}</span>
-              <span class="hora">{{ v.ida.hora_llegada }}</span>
-              <span class="ciudad">{{ v.destino }}</span>
-              <span class="precio">{{ v.ida.precio | currency:'EUR' }}</span>
-              <button class="ver-vuelo-btn" [routerLink]="['/detalles', v._id]">Ver vuelo</button>
-            </div>
-          </div>
-        } @else {
-          <div class="viaje-card">
-            <p>No hay viajes disponibles.</p>
-          </div>
-        }
-      </div>
+    <!-- Filtro de aerolínea fuera del borde -->
+    <div class="filtro-aerolinea-externo">
+      <label for="filtroAerolinea">Filtrar por aerolínea:</label>
+      <select id="filtroAerolinea" [(ngModel)]="aerolineaSeleccionada">
+        <option value="">Todas</option>
+        <option *ngFor="let a of aerolineasDisponibles" [value]="a">{{ a }}</option>
+      </select>
     </div>
+
+    <h2 class="titulo-vuelos">Vuelos disponibles</h2>
+    @if (vuelosFiltrados.length > 0) {
+      <div class="vuelos-grid">
+        <div *ngFor="let v of vuelosFiltrados" class="viaje-card viaje-horizontal">
+          <div class="viaje-col aerolinea-col">
+            <ion-icon name="airplane-outline" class="icono-viaje"></ion-icon>
+            <span class="aerolinea-nombre">{{ v.ida.aerolinea }}</span>
+            <span class="hora">{{ v.ida.hora_salida }}</span>
+            <span class="ciudad">{{ v.origen }}</span>
+            <span class="hora">{{ v.ida.hora_llegada }}</span>
+            <span class="ciudad">{{ v.destino }}</span>
+            <span class="precio">{{ v.ida.precio | currency:'EUR' }}</span>
+            <button class="ver-vuelo-btn" [routerLink]="['/detalles', v._id]">Ver vuelo</button>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <div class="viaje-card">
+        <p>No hay viajes disponibles.</p>
+      </div>
+    }
 
     <div class="opiniones-section">
       <h2>Opiniones de nuestros usuarios</h2>

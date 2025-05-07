@@ -540,3 +540,101 @@ ion-title {
   font-size: 0.9rem;
   color: #b3b3b3;
 }
+.filtro-aerolinea-externo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 2.5rem 0 1.5rem 0;
+  width: 100%;
+  label {
+    color: #eaf6fb;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  select {
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    border: none;
+    background: #1a2236;
+    color: #eaf6fb;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 180px;
+    box-shadow: 0 2px 8px rgba(10, 35, 66, 0.08);
+  }
+  select:focus {
+    border: none;
+    box-shadow: 0 0 0 2px #3880ff;
+  }
+}
+.titulo-vuelos {
+  text-align: center;
+  color: #eaf6fb;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.opinion-estrellas {
+  display: flex;
+  gap: 0.1rem;
+}
+.estrella {
+  color: #ffd700;
+  font-size: 1.2rem;
+}
+.opinion-comentario {
+  margin: 0.5rem 0 0.2rem 0;
+  font-style: italic;
+}
+.opinion-fecha {
+  font-size: 0.9rem;
+  color: #b3b3b3;
+}
+.vuelos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  margin: 0 auto 2rem auto;
+  padding: 0 2vw;
+}
+.opinion-card {
+  min-width: 270px;
+  max-width: 350px;
+  margin: 0 auto;
+  background: #23395d;
+  border-radius: 16px;
+  color: #eaf6fb;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(10, 35, 66, 0.08);
+}
+.opinion-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.opinion-usuario {
+  color: #3880ff;
+}
+.opinion-estrellas {
+  display: flex;
+  gap: 0.1rem;
+}
+.estrella {
+  color: #ffd700;
+  font-size: 1.2rem;
+}
+.opinion-comentario {
+  margin: 0.5rem 0 0.2rem 0;
+  font-style: italic;
+}
+.opinion-fecha {
+  font-size: 0.9rem;
+  color: #b3b3b3;
+}
