@@ -40,23 +40,29 @@
     <div class="opiniones-section">
       <h2>Opiniones de nuestros usuarios</h2>
       <div *ngIf="opiniones && opiniones.length > 0; else noOpiniones">
-        <div class="opiniones-list">
-          <div *ngFor="let op of opiniones; trackBy: trackByOpinionId" class="opinion-card">
+        <div class="opiniones-slider">
+          <button class="slider-btn" (click)="opinionActual = (opinionActual - 1 + opiniones.length) % opiniones.length">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </button>
+          <div class="opinion-card opinion-slider-card" *ngIf="opiniones.length > 0">
             <div class="opinion-header">
-              <span class="opinion-usuario">{{ getNombreUsuario(op.usuario_id) }}</span>
+              <span class="opinion-usuario">{{ getNombreUsuario(opiniones[opinionActual].usuario_id) }}</span>
               <span class="opinion-estrellas">
-                <ng-container *ngFor="let estrella of getEstrellas(op.puntuacion); let i = index">
+                <ng-container *ngFor="let estrella of getEstrellas(opiniones[opinionActual].puntuacion); let i = index">
                   <ion-icon [name]="estrella ? 'star' : 'star-outline'" class="estrella"></ion-icon>
                 </ng-container>
               </span>
             </div>
             <div class="opinion-comentario">
-              "{{ op.comentario }}"
+              "{{ opiniones[opinionActual].comentario }}"
             </div>
             <div class="opinion-fecha">
-              {{ op.fecha | date:'mediumDate' }}
+              {{ opiniones[opinionActual].fecha | date:'mediumDate' }}
             </div>
           </div>
+          <button class="slider-btn" (click)="opinionActual = (opinionActual + 1) % opiniones.length">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </button>
         </div>
       </div>
       <ng-template #noOpiniones>

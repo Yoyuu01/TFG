@@ -47,7 +47,7 @@ export class InicioPage {
     // Devuelve un array único de aerolíneas disponibles
     return [...new Set(this.vuelos.map(v => v.ida.aerolinea))];
   }
-
+  opinionActual: number = 0;
   constructor(
     private viajesService: ViajesService,
     private opinionesService: OpinionesService,
