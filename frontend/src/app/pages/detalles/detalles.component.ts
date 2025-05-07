@@ -26,6 +26,7 @@ import {
   arrowForwardOutline
 } from 'ionicons/icons';
 import { HeaderComponent } from '../../componentes/header/header.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalles',
@@ -51,7 +52,8 @@ export class DetallesComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private viajesService: ViajesService,
-    private location: Location
+    private location: Location,
+    private router: Router // <-- Añade esto
   ) {
     addIcons({ 
       'log-in-outline': logInOutline,
@@ -77,6 +79,6 @@ export class DetallesComponent implements OnInit {
     this.location.back();
   }
   reservar() {
-    // Función vacía para compilar
+    this.router.navigate(['/reservas']);
   }
 }
