@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Location } from '@angular/common';
-import { IonContent, IonItem, IonLabel, IonInput } from '@ionic/angular/standalone';
+import { ReservasService } from 'src/app/services/reservas.service';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IonContent } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../componentes/header/header.component';
 
 @Component({
@@ -10,27 +11,31 @@ import { HeaderComponent } from '../../componentes/header/header.component';
   styleUrls: ['./reservas.component.scss'],
   standalone: true,
   imports: [
-    IonContent,
-    IonItem,
-    IonLabel,
-    IonInput,
+    CommonModule,
     FormsModule,
+    IonContent,
     HeaderComponent
   ]
 })
 export class ReservasComponent {
-  nombre: string = '';
-  email: string = '';
-  telefono: string = '';
+  reserva = {
+    usuario_id: '',
+    vuelo_id: '',
+    fecha_reserva: '',
+    estado: '',
+    asiento: ''
+  };
 
-  constructor(private location: Location) {}
+  constructor(private reservasService: ReservasService) {}
 
-  confirmarReserva() {
-    // Aquí iría la lógica para confirmar la reserva
-    alert('¡Reserva confirmada!');
-  }
-
-  volver() {
-    this.location.back();
+  crearReserva() {
+    this.reservasService.crearReserva(this.reserva).subscribe({
+      next: (res) => {
+        alert('Reserva creada correctamente');
+      },
+      error: (err) => {
+        alert('Error al crear la reserva');
+      }
+    });
   }
 }

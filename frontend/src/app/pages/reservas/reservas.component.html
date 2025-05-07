@@ -7,21 +7,28 @@
     </div>
     <div class="main-content">
       <div class="container">
-        <form (ngSubmit)="confirmarReserva()" #reservaForm="ngForm">
-          <ion-item>
-            <ion-label position="floating">Nombre completo</ion-label>
-            <ion-input type="text" required [(ngModel)]="nombre" name="nombre"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" required [(ngModel)]="email" name="email"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Teléfono</ion-label>
-            <ion-input type="tel" required [(ngModel)]="telefono" name="telefono"></ion-input>
-          </ion-item>
-          <button class="reservar-btn" type="submit" [disabled]="!reservaForm.form.valid">Confirmar Reserva</button>
-          <button class="reservar-btn" type="button" (click)="volver()">Volver</button>
+        <form (ngSubmit)="crearReserva()" #reservaForm="ngForm" class="reserva-form">
+          <div class="form-group">
+            <label for="usuario_id">Usuario ID:</label>
+            <input type="text" id="usuario_id" name="usuario_id" [(ngModel)]="reserva.usuario_id" required>
+          </div>
+          <div class="form-group">
+            <label for="vuelo_id">Vuelo ID:</label>
+            <input type="text" id="vuelo_id" name="vuelo_id" [(ngModel)]="reserva.vuelo_id" required>
+          </div>
+          <div class="form-group">
+            <label for="fecha_reserva">Fecha de reserva:</label>
+            <input type="date" id="fecha_reserva" name="fecha_reserva" [(ngModel)]="reserva.fecha_reserva" required>
+          </div>
+          <div class="form-group">
+            <label for="estado">Estado:</label>
+            <input type="text" id="estado" name="estado" [(ngModel)]="reserva.estado" required>
+          </div>
+          <div class="form-group">
+            <label for="asiento">Asiento:</label>
+            <input type="text" id="asiento" name="asiento" [(ngModel)]="reserva.asiento" required>
+          </div>
+          <button type="submit" class="reservar-btn">Reservar</button>
         </form>
       </div>
     </div>

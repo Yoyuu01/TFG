@@ -10,10 +10,6 @@ import {
   IonButtons, 
   IonIcon, 
   IonMenuButton,
-  IonMenu,
-  IonList,
-  IonItem,
-  IonLabel
 } from '@ionic/angular/standalone';
 import { Location } from '@angular/common';
 import { RouterModule } from '@angular/router';

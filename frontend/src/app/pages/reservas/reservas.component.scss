@@ -1,4 +1,114 @@
-// ... existing code ...
-@import '../detalles/detalles.component.scss';
-// Puedes añadir estilos específicos para reservas aquí si lo necesitas
-// ... existing code ...
+body, ion-content {
+  background: linear-gradient(135deg, #0a2342 0%, #2e4a62 100%);
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  padding: 0 1rem;
+  margin: 48px auto;
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+.reserva-form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  border-radius: 24px;
+  background: rgba(20, 24, 36, 0.97);
+  box-shadow: 0 8px 32px rgba(10, 35, 66, 0.18);
+  border: 1.5px solid #23395d;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  animation: fadeInDown 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: box-shadow 0.3s;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #eaf6fb;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #23395d;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #1a2236;
+  color: #eaf6fb;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #3a7ca5;
+  outline: none;
+}
+
+.reservar-btn {
+  margin-top: 1.2rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #3a7ca5 0%, #274472 100%);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(42, 92, 160, 0.12);
+  transition: background 0.3s, transform 0.2s;
+  font-size: 1.1rem;
+  padding: 0.7rem 0;
+  width: 100%;
+  border: none;
+  animation: fadeInUp 0.7s 0.2s backwards;
+  cursor: pointer;
+}
+
+.reservar-btn:hover {
+  background: linear-gradient(90deg, #274472 0%, #3a7ca5 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #eaf6fb;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 60vh;
+}
