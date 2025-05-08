@@ -14,9 +14,9 @@ import {
   shieldCheckmarkOutline,
   arrowBackOutline
 } from 'ionicons/icons';
-import { ViajesService, Vuelo } from 'src/app/services/viajes.service';
-import { OpinionesService, Opinion } from 'src/app/services/opiniones.service';
-import { UsuariosService,Usuario } from'src/app/services/usuarios.service';
+import { ViajesService, Vuelo } from '../../services/viajes.service';
+import { OpinionesService, Opinion } from '../../services/opiniones.service';
+import { UsuariosService, Usuario } from '../../services/usuarios.service';
 import { HeaderComponent } from '../../componentes/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
