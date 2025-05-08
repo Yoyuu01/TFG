@@ -5,30 +5,30 @@
       <h1>Descubre el mundo con EuroJet</h1>
       <p>Tu próxima aventura comienza aquí</p>
     </div>
-<ion-content [fullscreen]="true">
-  <div class="register-container">
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input type="text" [(ngModel)]="nombre" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Correo electrónico</ion-label>
-        <ion-input type="email" [(ngModel)]="email" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="contrasena" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Confirmar contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="confirmarContrasena" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Teléfono</ion-label>
-        <ion-input type="tel" [(ngModel)]="telefono" required></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-button expand="block" class="register-btn" (click)="registrarUsuario()">Crear cuenta</ion-button>
-  </div>
-</ion-content>
+    <div class="register-container">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" [(ngModel)]="nombre" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo electrónico</ion-label>
+          <ion-input type="email" [(ngModel)]="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" [(ngModel)]="contrasena" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Confirmar contraseña</ion-label>
+          <ion-input type="password" [(ngModel)]="confirmarContrasena" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Teléfono</ion-label>
+          <ion-input type="tel" [(ngModel)]="telefono" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" class="register-btn" (click)="registrarUsuario()">Crear cuenta</ion-button>
+    </div>
+  </ion-content>
+</div>

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservasService } from 'src/app/services/reservas.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-mis-reservas',
   templateUrl: './mis-reservas.component.html',
   styleUrls: ['./mis-reservas.component.scss'],
-  standalone: true
+  standalone: true,
+  imports: [CommonModule],
 })
 export class MisReservasComponent implements OnInit {
   reservas: any[] = [];
