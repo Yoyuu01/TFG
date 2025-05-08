@@ -6,7 +6,6 @@
       <p>Tu próxima aventura comienza aquí</p>
     </div>
 
-    <!-- Filtro de aerolínea fuera del borde -->
     <div class="filtro-aerolinea-externo">
       <label for="filtroAerolinea">Filtrar por aerolínea:</label>
       <select id="filtroAerolinea" [(ngModel)]="aerolineaSeleccionada">
@@ -18,27 +17,24 @@
     <h2 class="titulo-vuelos">Vuelos disponibles</h2>
     @if (vuelosFiltrados.length > 0) {
       <div class="vuelos-grid">
-        <div *ngFor="let v of vuelosFiltrados" class="viaje-card flight-card-horizontal">
-          <div class="flight-icon-col">
+        <div *ngFor="let v of vuelosFiltrados" class="viaje-card flight-card">
+          <div class="flight-airline">
+            <span>{{ v.ida.aerolinea }}</span>
+          </div>
+          <div class="flight-icon">
             <ion-icon name="airplane-outline"></ion-icon>
-            <div class="flight-airline">{{ v.ida.aerolinea }}</div>
           </div>
-          <div class="flight-info-col">
-            <div class="flight-row">
-              <div class="flight-label">Salida</div>
-              <div class="flight-hour">{{ v.ida.hora_salida }}</div>
-              <div class="flight-city">{{ v.origen }}</div>
+          <div class="flight-names">
+            <div>
+              <strong>Origen:</strong> {{ v.origen }}
             </div>
-            <div class="flight-row">
-              <div class="flight-label">Llegada</div>
-              <div class="flight-hour">{{ v.ida.hora_llegada }}</div>
-              <div class="flight-city">{{ v.destino }}</div>
+            <div>
+              <strong>Destino:</strong> {{ v.destino }}
             </div>
           </div>
-          <div class="flight-price-col">
-            <div class="flight-price">{{ v.ida.precio | currency:'EUR' }}</div>
-            <button class="ver-vuelo-btn" [routerLink]="['/detalles', v._id]">Ver vuelo</button>
-          </div>
+          <button class="ver-vuelo-btn bonito" [routerLink]="['/detalle-vuelo', v._id]">
+            Ver detalles
+          </button>
         </div>
       </div>
     } @else {

@@ -9,11 +9,11 @@ import {
     Post, Put, Query
 } from '@nestjs/common';
 import { ViajesService } from "./services/viajes.service";
-import { vuelosDto } from "./interfaces/vuelos-dto.interface";
-import { usuariosDto } from "./interfaces/usuarios.interface";
-import { reservasDto } from "./interfaces/reservas.interface";
-import { pagosDto } from "./interfaces/pagos.interface";
-import { opinionesDto } from "./interfaces/opiniones.interface";
+import { vuelosDto } from "./dto/vuelos.dto";
+import { usuariosDto } from "./dto/usuarios.dto";
+import { reservasDto } from "./dto/reservas.dto";
+import { pagosDto } from "./dto/pagos.dto";
+import { opinionesDto } from "./dto/opiniones.dto";
 
 @Controller('api/v1/viajes')
 export class ViajesController {

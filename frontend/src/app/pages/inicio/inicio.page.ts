@@ -19,6 +19,7 @@ import { OpinionesService, Opinion } from 'src/app/services/opiniones.service';
 import { UsuariosService,Usuario } from'src/app/services/usuarios.service';
 import { HeaderComponent } from '../../componentes/header/header.component';
 import { FormsModule } from '@angular/forms';
+import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-inicio',
@@ -59,7 +60,9 @@ export class InicioPage {
       'airplane-outline': airplaneOutline,
       'wallet-outline': walletOutline,
       'shield-checkmark-outline': shieldCheckmarkOutline,
-      'arrow-back-outline': arrowBackOutline
+      'arrow-back-outline': arrowBackOutline,
+      'chevron-back-outline': chevronBackOutline,
+      'chevron-forward-outline': chevronForwardOutline
     });
   }
 
