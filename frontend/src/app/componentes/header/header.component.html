@@ -1,12 +1,24 @@
-<app-menu></app-menu>
-
 <ion-header>
-  <ion-toolbar class="header-toolbar">
-    <ion-title class="ion-text-center">
-      EuroJet
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
+  <ion-toolbar>
+    <div class="header-content">
+      <a class="header-title-link" routerLink="/inicio">
+        <ion-title>
+          <ion-icon name="airplane-outline" style="margin-right:8px;"></ion-icon>
+          EuroJet
+        </ion-title>
+      </a>
+      <div class="header-menu">
+        <ion-buttons>
+          <ion-button routerLink="/login">
+            <ion-icon slot="start" name="log-in-outline"></ion-icon>
+            Iniciar Sesión
+          </ion-button>
+          <ion-button routerLink="/register">
+            <ion-icon slot="start" name="person-add-outline"></ion-icon>
+            Registrarse
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>

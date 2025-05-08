@@ -1,14 +1,6 @@
 import { Component } from '@angular/core';
-import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
-  IonIcon, 
-  IonButtons, 
-  IonMenuButton 
-} from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { RouterModule } from '@angular/router';
-import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-header',
@@ -20,9 +12,9 @@ import { MenuComponent } from '../menu/menu.component';
     IonToolbar,
     IonTitle,
     IonButtons,
-    IonMenuButton,
-    RouterModule,
-    MenuComponent
+    IonButton,
+    IonIcon,
+    RouterModule
   ]
 })
 export class HeaderComponent {}
