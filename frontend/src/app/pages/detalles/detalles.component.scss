@@ -1,25 +1,35 @@
 body, ion-content {
-  background: linear-gradient(135deg, #0a2342 0%, #2e4a62 100%);
+  background: linear-gradient(135deg, #181c24 0%, #232a39 100%);
   min-height: 100vh;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .hero-section {
-  text-align: center;
-  margin-top: 32px;
-  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem 2rem 1rem;
   color: #eaf6fb;
+  text-align: center;
+
   h1 {
     font-size: 2.7rem;
-    margin-bottom: 10px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-shadow: 0 4px 24px #23395d88;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(20, 30, 48, 0.18);
   }
+
   p {
-    font-size: 1.18rem;
-    opacity: 0.92;
+    font-size: 1.2rem;
     font-weight: 400;
-    margin-top: 8px;
+    opacity: 0.85;
+    margin-bottom: 0;
   }
 }
 
@@ -29,15 +39,19 @@ body, ion-content {
   margin: 0 auto;
   padding: 36px 12px 28px 12px;
   border-radius: 18px;
-  background: rgba(20, 24, 36, 0.92);
-  box-shadow: 0 8px 32px rgba(10, 35, 66, 0.18);
+  background: rgba(35, 42, 57, 0.92);
+  box-shadow: 0 8px 32px rgba(56,128,255,0.10);
   border: none;
   animation: fadeInDown 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   transition: box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .trayecto-titulo {
-  color: #3a7ca5;
+  color: #4f8cff;
   font-size: 1.35rem;
   font-weight: 800;
   margin: 32px 0 10px 0;
@@ -46,32 +60,27 @@ body, ion-content {
 }
 
 .viaje-card {
+  background: #232a39;
+  border-radius: 22px;
+  box-shadow: 0 4px 18px rgba(56,128,255,0.10), 0 1.5px 8px rgba(10, 35, 66, 0.08);
+  border: 2px solid #2e3a55;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  min-width: 420px;
+  max-width: 520px;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  gap: 22px;
-  background: linear-gradient(120deg, #23395d 60%, #274472 100%);
-  border-radius: 22px;
-  padding: 32px 22px;
-  margin-bottom: 28px;
-  border: none;
-  box-shadow: 0 4px 18px rgba(10, 35, 66, 0.18);
-  color: #eaf6fb;
-  font-size: 1.13rem;
-  position: relative;
-  overflow: hidden;
   align-items: center;
-}
+  gap: 1.1rem;
+  transition: transform 0.2s, border 0.2s, box-shadow 0.2s;
+  position: relative;
+  margin-bottom: 28px;
 
-.viaje-card::before {
-  content: "";
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, #3a7ca5 0%, transparent 70%);
-  opacity: 0.18;
-  z-index: 0;
+  &:hover {
+    transform: translateY(-8px) scale(1.04);
+    border-color: #3880ff;
+    box-shadow: 0 10px 28px rgba(56,128,255,0.13);
+  }
 }
 
 .viaje-col {
@@ -87,9 +96,9 @@ body, ion-content {
   flex: 1;
   .icono-viaje {
     font-size: 2.7rem;
-    color: #3a7ca5;
+    color: #3880ff;
     margin-bottom: 8px;
-    filter: drop-shadow(0 2px 8px #3a7ca588);
+    filter: drop-shadow(0 2px 8px #3880ff88);
   }
   .aerolinea-nombre {
     font-weight: 700;
@@ -111,7 +120,7 @@ body, ion-content {
     .hora {
       font-size: 1.25rem;
       font-weight: 700;
-      color: #3a7ca5;
+      color: #4f8cff;
       letter-spacing: 0.5px;
     }
     .ciudad {
@@ -132,7 +141,7 @@ body, ion-content {
     }
     ion-icon {
       font-size: 1.5rem;
-      color: #3a7ca5;
+      color: #3880ff;
     }
   }
 }
@@ -143,10 +152,10 @@ body, ion-content {
   .precio {
     font-size: 1.6rem;
     font-weight: 800;
-    color: #3a7ca5;
+    color: #4f8cff;
     margin-bottom: 10px;
     letter-spacing: 1px;
-    text-shadow: 0 2px 8px #3a7ca544;
+    text-shadow: 0 2px 8px #4f8cff44;
   }
 }
 
@@ -156,7 +165,7 @@ body, ion-content {
   margin-top: 18px;
   padding: 15px 0;
   border-radius: 14px;
-  background: linear-gradient(90deg, #3a7ca5 0%, #274472 100%);
+  background: linear-gradient(90deg, #3880ff 0%, #4f8cff 100%);
   color: #fff;
   font-weight: 700;
   letter-spacing: 0.7px;
@@ -169,7 +178,7 @@ body, ion-content {
 }
 
 .reservar-btn:hover {
-  background: linear-gradient(90deg, #274472 0%, #3a7ca5 100%);
+  background: linear-gradient(90deg, #4f8cff 0%, #3880ff 100%);
   transform: translateY(-2px) scale(1.04);
 }
 
@@ -181,21 +190,17 @@ body, ion-content {
   }
   .viaje-card {
     flex-direction: column;
-    padding: 16px 6px;
+    padding: 1.2rem 0.7rem;
     border-radius: 16px;
     margin-bottom: 22px;
     gap: 10px;
     box-shadow: 0 2px 10px rgba(10, 35, 66, 0.13);
+    min-width: 90vw;
+    max-width: 98vw;
   }
   .trayecto-titulo {
     margin-top: 14px;
     font-size: 1.08rem;
-  }
-  .viaje-card::before {
-    width: 80px;
-    height: 80px;
-    top: -24px;
-    right: -24px;
   }
   .reservar-btn {
     font-size: 1.05rem;
@@ -219,11 +224,6 @@ body, ion-content {
     margin-bottom: 6px;
   }
 }
-.trayecto-titulo {
-    margin-top: 18px;
-    font-size: 1.1rem;
-}
-
 
 @keyframes fadeInDown {
   from {
@@ -256,43 +256,70 @@ ion-toolbar, ion-title {
 }
 
 ion-icon[name="arrow-back-outline"] {
-  color: #3a7ca5 !important;
+  color: #3880ff !important;
 }
 
-
-// Estilos para el menú lateral
-.menu-button {
-  margin-bottom: 10px;
-  border-radius: 8px;
-  --background: rgba(35, 57, 93, 0.18);
-  --border-color: #23395d;
-  --border-width: 1px;
-  --border-style: solid;
-  
-  ion-icon {
-    color: #3a7ca5;
-    margin-right: 10px;
+.resumen-viaje {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #232a39;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 12px rgba(56,128,255,0.08);
+  border: 1.5px solid #2e3a55;
+  .titulo-viaje {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #eaf6fb;
+    margin-bottom: 0.2rem;
   }
-  
-  ion-label {
-    font-weight: 500;
+  .subtitulo-viaje {
+    color: #7ea7ff;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .fechas-viaje {
+    display: flex;
+    align-items: center;
+    color: #b3cfff;
+    font-size: 1.1rem;
+    ion-icon {
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+      color: #4f8cff;
+    }
+  }
+  .precio-total {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #4f8cff;
+    margin-left: 2rem;
+    align-self: flex-start;
   }
 }
 
-.menu-button:hover {
-  --background: rgba(58, 124, 165, 0.1);
-}
-
-ion-menu ion-toolbar {
-  --background: #101c2c;
-  --color: #eaf6fb;
-}
-
-ion-menu ion-content {
-  --background: linear-gradient(135deg, #0a2342 0%, #2e4a62 100%);
-}
-
-ion-menu ion-list {
-  background: transparent;
-  padding-top: 20px;
+.estado-reserva {
+  display: flex;
+  align-items: center;
+  background: #1e2a3a;
+  border-radius: 10px;
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #7fffa1;
+  font-weight: 600;
+  font-size: 1.15rem;
+  box-shadow: 0 1px 6px rgba(127,255,161,0.07);
+  .icono-estado {
+    color: #7fffa1;
+    font-size: 1.5rem;
+    margin-right: 0.7rem;
+  }
+  .referencia {
+    color: #b3cfff;
+    font-size: 0.95rem;
+    margin-left: 1.5rem;
+    font-weight: 400;
+  }
 }

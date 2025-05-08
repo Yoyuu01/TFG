@@ -57,13 +57,13 @@
             </div>
           </ng-container>
           <button class="reservar-btn" [routerLink]="['/reservas']" [queryParams]="{ vuelo_id: vuelo._id, vuelo_nombre: vuelo.ida.aerolinea }">Reservar</button>
+          <button class="reservar-btn" (click)="volver()">Volver</button>
         </div>
         <ng-template #cargando>
           <div class="viaje-card">
             <p>Cargando información del vuelo...</p>
           </div>
         </ng-template>
-        <button class="reservar-btn" (click)="volver()">Volver</button>
       </div>
     </div>
   </ion-content>

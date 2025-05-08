@@ -50,6 +50,10 @@ export class ViajesService {
 
     // Métodos para Usuarios
     async addUsuario(usuarioDto: usuariosDto): Promise<usuariosDto> {
+        const existente = await this.usuarioModel.findOne({ email: usuarioDto.email }).exec();
+        if (existente) {
+            throw new Error('El email ya está registrado');
+        }
         const usuario = new this.usuarioModel(usuarioDto);
         return usuario.save();
     }
