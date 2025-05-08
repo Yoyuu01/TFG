@@ -1,4 +1,4 @@
-export interface usuariosDto {
+export class usuariosDto {
     _id: string;
     nombre: string;
     email: string;

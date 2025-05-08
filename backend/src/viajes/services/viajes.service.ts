@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { vuelosDto } from "../../viajes/interfaces/vuelos-dto.interface";
-import { usuariosDto } from "../../viajes/interfaces/usuarios-dto.interface";
-import { reservasDto } from "../../viajes/interfaces/reservas-dto.interface";
-import { pagosDto } from "../../viajes/interfaces/pagos-dto.interface";
-import { opinionesDto } from "../../viajes/interfaces/opiniones-dto.interface";
+import { usuariosDto } from "../interfaces/usuarios.interface";
+import { reservasDto } from "../interfaces/reservas.interface";
+import { pagosDto } from "../interfaces/pagos.interface";
+import { opinionesDto } from "../interfaces/opiniones.interface";
 
 @Injectable()
 export class ViajesService {

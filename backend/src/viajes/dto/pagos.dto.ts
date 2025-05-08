@@ -1,4 +1,4 @@
-export interface pagosDto {
+export class pagosDto {
     _id: string;
     reserva_id: string;
     monto: number;

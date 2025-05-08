@@ -1,4 +1,4 @@
-export interface VueloSegmentoInterface {
+export class VueloSegmentoDto {
     fecha_salida: string;
     hora_salida: string;
     hora_llegada: string;

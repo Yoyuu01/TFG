@@ -1,4 +1,4 @@
-export interface reservasDto {
+export interface reservasInterface {
     _id: string;
     usuario_id: string;
     vuelo_id: string;

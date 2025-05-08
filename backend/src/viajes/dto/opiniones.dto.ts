@@ -1,4 +1,4 @@
-export interface opinionesDto {
+export class opinionesDto {
     _id: string;
     usuario_id: string;
     vuelo_id: string;
