@@ -110,10 +110,15 @@ export class ReservasComponent implements OnInit {
         const reservaData = { ...this.reserva };
         const { vuelo_nombre, ...reservaDataWithoutNombre } = reservaData;
         this.reservasService.crearReserva(reservaDataWithoutNombre).subscribe({
-          next: () => {
+          next: (res: any) => {
             this.mensaje += '\n¡Reserva creada correctamente!';
             // Limpiar el asiento guardado solo si la reserva fue exitosa
             localStorage.removeItem('asiento_reserva');
+            // Redirigir a la página de pago pasando el id de la reserva
+            const reservaId = res && res._id ? res._id : (res && res.id ? res.id : null);
+            if (reservaId) {
+              this.router.navigate(['/pago'], { queryParams: { reserva_id: reservaId } });
+            }
           },
           error: () => {
             this.mensaje = 'Error al crear la reserva. Inténtalo de nuevo.';

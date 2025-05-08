@@ -1,0 +1,82 @@
+body, ion-content {
+  background: linear-gradient(135deg, #0a2342 0%, #2e4a62 100%);
+  min-height: 100vh;
+}
+
+.hero-section {
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  color: #eaf6fb;
+  h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 24px #23395d88;
+  }
+  p {
+    font-size: 1.18rem;
+    opacity: 0.92;
+    font-weight: 400;
+    margin-top: 8px;
+  }
+}
+
+.pago-container {
+  max-width: 380px;
+  margin: 48px auto;
+  padding: 32px 24px;
+  border-radius: 24px;
+  background: rgba(20, 24, 36, 0.97);
+  box-shadow: 0 8px 32px rgba(10, 35, 66, 0.18);
+  border: 1.5px solid #23395d;
+  animation: fadeInDown 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: box-shadow 0.3s;
+}
+
+ion-list, ion-item {
+  background: transparent !important;
+}
+
+ion-item {
+  border-radius: 10px;
+  margin-bottom: 18px;
+  border: 1px solid #23395d;
+  transition: border-color 0.3s;
+  background: rgba(35, 57, 93, 0.18) !important;
+}
+
+ion-label {
+  color: #eaf6fb;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+ion-input {
+  color: #eaf6fb;
+}
+
+.pago-btn {
+  margin-top: 28px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #3a7ca5 0%, #274472 100%);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(42, 92, 160, 0.12);
+  transition: background 0.3s, transform 0.2s;
+  animation: fadeInUp 0.7s 0.2s backwards;
+}
+
+.pago-btn:hover {
+  background: linear-gradient(90deg, #274472 0%, #3a7ca5 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.mensaje-pago {
+  margin-top: 18px;
+  color: #4f8cff;
+  font-weight: 700;
+  text-align: center;
+}

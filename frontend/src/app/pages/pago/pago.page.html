@@ -1,0 +1,27 @@
+<div class="ion-page" id="main-content">
+  <app-header></app-header>
+  <ion-content [fullscreen]="true">
+    <div class="hero-section">
+      <h1>Pagar reserva</h1>
+      <p>Introduce los datos de tu pago para completar la reserva</p>
+    </div>
+    <div class="pago-container">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">ID de reserva</ion-label>
+          <ion-input type="text" [(ngModel)]="reserva_id" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Monto (€)</ion-label>
+          <ion-input type="number" [(ngModel)]="monto" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Método de pago</ion-label>
+          <ion-input type="text" [(ngModel)]="metodo_pago" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" class="pago-btn" (click)="realizarPago()">Pagar</ion-button>
+      <div *ngIf="mensaje" class="mensaje-pago">{{ mensaje }}</div>
+    </div>
+  </ion-content>
+</div>
