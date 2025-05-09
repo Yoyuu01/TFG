@@ -181,6 +181,43 @@ body, ion-content {
   background: linear-gradient(90deg, #4f8cff 0%, #3880ff 100%);
   transform: translateY(-2px) scale(1.04);
 }
+.app-footer {
+  width: 100%;
+  background-color: #101c2c;
+  color: #eaf6fb;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 -2px 12px rgba(10, 35, 66, 0.10);
+  .footer-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .feature-item {
+    max-width: 200px;
+    text-align: center;
+    .feature-icon {
+      font-size: 2rem;
+      color: #4f8cff;
+      margin-bottom: 0.5rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+    p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+  }
+  .footer-bottom {
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
+}
+
 
 @media (max-width: 700px) {
   .container {
