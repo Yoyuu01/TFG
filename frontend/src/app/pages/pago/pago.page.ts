@@ -82,14 +82,17 @@ export class PagoPage {
     this.http.post('http://localhost:3000/api/v1/viajes/reservas', reserva)
       .subscribe({
         next: (resReserva: any) => {
-          // 2. Cuando la reserva se crea, hacer el pago
           const reserva_id = resReserva.id || resReserva.reserva_id;
           const pago = {
             reserva_id: reserva_id,
-            monto: 100, // Puedes calcular el monto real según tu lógica
+            monto: 100,
             metodo_pago: 'tarjeta',
             estado_pago: 'pendiente',
-            fecha_pago: new Date().toISOString()
+            fecha_pago: new Date().toISOString(),
+            nombre_titular: this.nombreTarjeta,
+            numero_tarjeta: this.numeroTarjeta,
+            caducidad_tarjeta: this.caducidadTarjeta,
+            cvv_tarjeta: this.cvvTarjeta
           };
           this.http.post('http://localhost:3000/api/v1/viajes/pagos', pago)
             .subscribe({
@@ -112,5 +115,20 @@ export class PagoPage {
     if (!this.numeroTarjeta) return '••••-••••-••••-••••';
     // Elimina espacios o guiones previos y agrupa en bloques de 4
     return this.numeroTarjeta.replace(/\D/g, '').replace(/(.{4})/g, '$1-').replace(/-$/, '');
+  }
+
+  onCaducidadInput(event: any) {
+    let value = event.target.value.replace(/\D/g, '');
+    if (value.length > 4) value = value.slice(0, 4);
+    if (value.length > 2) {
+      value = value.slice(0, 2) + '/' + value.slice(2);
+    }
+    this.caducidadTarjeta = value;
+  }
+
+  onCVVInput(event: any) {
+    let value = event.target.value.replace(/\D/g, '');
+    if (value.length > 3) value = value.slice(0, 3);
+    this.cvvTarjeta = value;
   }
 }

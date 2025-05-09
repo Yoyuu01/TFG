@@ -382,3 +382,131 @@ ion-input {
 .tarjeta-visual {
   margin-bottom: 0;
 }
+
+/* Estilo para los inputs personalizados de fecha y CVV */
+ion-item {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0;
+  min-height: unset;
+  margin-bottom: 0.8rem;
+}
+
+ion-label {
+  color: #ffd700;
+  font-weight: 600;
+  font-size: 1.15rem;
+  padding-left: 4px;
+}
+
+ion-input,
+ion-item input[type="text"] {
+  width: 100%;
+  background: #181c24;
+  border: 1.5px solid #3a7ca5;
+  border-radius: 8px;
+  color: #eaf6fb;
+  font-size: 1.08rem;
+  padding: 10px 8px;
+  margin-top: 12px;
+  margin-bottom: 0;
+  outline: none;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  box-shadow: none;
+}
+
+ion-input:focus,
+ion-item input[type="text"]:focus {
+  border-color: #ffd700;
+}
+
+ion-item .input-wrapper {
+  width: 100%;
+}
+
+ion-item {
+  align-items: flex-start;
+}
+
+ion-item input[type="text"]::placeholder {
+  color: #b0b0b0;
+  opacity: 1;
+  font-size: 1rem;
+}
+/* Ajuste para el label flotante */
+ion-item ion-label {
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+/* Opcional: mejora el placeholder */
+ion-item input[type="text"]::placeholder {
+  color: #b0b0b0;
+  opacity: 1;
+  font-size: 1rem;
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  ion-item input[type="text"] {
+    font-size: 1rem;
+    padding: 10px 8px;
+  }
+}
+
+.pago-form-list-casillas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  background: transparent !important;
+  padding: 0;
+  width: 100%;
+}
+
+.casilla-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.casilla-label {
+  color: #ffd700;
+  font-weight: 600;
+  font-size: 1.08rem;
+  margin-bottom: 2px;
+  margin-left: 2px;
+}
+
+.casilla-input {
+  background: #181c24;
+  border: 2px solid #3a7ca5;
+  border-radius: 8px;
+  color: #eaf6fb;
+  font-size: 1.13rem;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.casilla-input:focus {
+  border-color: #ffd700;
+}
+
+.casilla-input::placeholder {
+  color: #b0b0b0;
+  opacity: 1;
+  font-size: 1rem;
+}
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  ion-item input[type="text"] {
+    font-size: 1rem;
+    padding: 10px 8px;
+  }
+}

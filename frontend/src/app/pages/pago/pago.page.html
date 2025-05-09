@@ -63,30 +63,23 @@
       <div class="pago-col-der">
         <div class="pago-container">
           <h3>Datos de pago</h3>
-          <ion-list class="pago-form-list">
-            <ion-item>
-              <ion-label position="floating">Nombre en la tarjeta</ion-label>
-              <ion-input type="text" [(ngModel)]="nombreTarjeta" required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Número de tarjeta</ion-label>
-              <ion-input
-                type="tel"
-                inputmode="numeric"
-                pattern="[0-9]*"
-                maxlength="16"
-                [(ngModel)]="numeroTarjeta"
-                required>
-              </ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Fecha de caducidad</ion-label>
-              <ion-input type="text" maxlength="5" placeholder="MM/AA" [(ngModel)]="caducidadTarjeta" required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">CVV</ion-label>
-              <ion-input type="password" maxlength="4" [(ngModel)]="cvvTarjeta" required></ion-input>
-            </ion-item>
+          <ion-list class="pago-form-list-casillas">
+            <div class="casilla-form-group">
+              <label for="nombreTarjeta" class="casilla-label">Nombre en la tarjeta</label>
+              <input id="nombreTarjeta" type="text" [(ngModel)]="nombreTarjeta" class="casilla-input" required />
+            </div>
+            <div class="casilla-form-group">
+              <label for="numeroTarjeta" class="casilla-label">Número de tarjeta</label>
+              <input id="numeroTarjeta" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="16" [(ngModel)]="numeroTarjeta" class="casilla-input" required />
+            </div>
+            <div class="casilla-form-group">
+              <label for="caducidadTarjeta" class="casilla-label">Fecha de caducidad</label>
+              <input id="caducidadTarjeta" type="text" [(ngModel)]="caducidadTarjeta" (input)="onCaducidadInput($event)" maxlength="5" placeholder="MM/YY" class="casilla-input" />
+            </div>
+            <div class="casilla-form-group">
+              <label for="cvvTarjeta" class="casilla-label">CVV</label>
+              <input id="cvvTarjeta" type="text" [(ngModel)]="cvvTarjeta" (input)="onCVVInput($event)" maxlength="3" placeholder="CVV" class="casilla-input" />
+            </div>
           </ion-list>
           <ion-button expand="block" class="pago-btn" (click)="realizarPago()">Pagar</ion-button>
           <div *ngIf="mensaje" class="mensaje-pago">{{ mensaje }}</div>
