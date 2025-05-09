@@ -96,7 +96,9 @@ export class ReservasComponent implements OnInit {
     do {
       asiento = this.generarAsientoAleatorio();
       // Espera a que el observable se resuelva correctamente
-      existe = await this.reservasService.existeAsiento(asiento).toPromise().then(res => !!res).catch(() => false);
+      existe = await (this.reservasService.existeAsiento
+        ? this.reservasService.existeAsiento(asiento).toPromise().then((res: any) => !!res).catch(() => false)
+        : false);
     } while (existe);
     return asiento;
   }
@@ -104,31 +106,47 @@ export class ReservasComponent implements OnInit {
   crearReserva() {
     // Comprobar si es la primera reserva del usuario
     this.reservasService.getReservasPorUsuario(this.reserva.nombre).subscribe({
-      next: (reservas) => {
+      next: (reservas: any[]) => {
         if (reservas.length === 0) {
           // Es la primera reserva
           this.mensaje = '¡Felicidades! Esta es tu primera reserva.';
         }
         const reservaData = { ...this.reserva };
         const { vuelo_nombre, ...reservaDataWithoutNombre } = reservaData;
-        this.reservasService.crearReserva(reservaDataWithoutNombre).subscribe({
-          next: (res: any) => {
-            this.mensaje += '\n¡Reserva creada correctamente!';
-            // Limpiar el asiento guardado solo si la reserva fue exitosa
-            localStorage.removeItem('asiento_reserva');
-            // Redirigir a la página de pago pasando el id de la reserva
-            const reservaId = res && res._id ? res._id : (res && res.id ? res.id : null);
-            if (reservaId) {
-              this.router.navigate(['/pago'], { queryParams: { reserva_id: reservaId } });
+        if (this.reservasService.crearReserva) {
+          this.reservasService.crearReserva(reservaDataWithoutNombre).subscribe({
+            next: (res: any) => {
+              this.mensaje += '\n¡Reserva creada correctamente!';
+              // Limpiar el asiento guardado solo si la reserva fue exitosa
+              localStorage.removeItem('asiento_reserva');
+              // Redirigir a la página de pago pasando el id de la reserva
+              const reservaId = res && res._id ? res._id : (res && res.id ? res.id : null);
+              if (reservaId) {
+                this.irAPago();
+              }
+            },
+            error: () => {
+              this.mensaje = 'Error al crear la reserva. Inténtalo de nuevo.';
             }
-          },
-          error: () => {
-            this.mensaje = 'Error al crear la reserva. Inténtalo de nuevo.';
-          }
-        });
+          });
+        } else {
+          this.mensaje = 'Error: crearReserva no está implementado en el servicio.';
+        }
       },
       error: () => {
         this.mensaje = 'Error al comprobar reservas previas.';
+      }
+    });
+  }
+
+  irAPago() {
+    this.router.navigate(['/pago'], {
+      queryParams: {
+        reserva_id: this.reserva.vuelo_id,
+        nombre: this.reserva.nombre,
+        vuelo_nombre: this.reserva.vuelo_nombre,
+        fecha_reserva: this.reserva.fecha_reserva,
+        asiento: this.reserva.asiento
       }
     });
   }

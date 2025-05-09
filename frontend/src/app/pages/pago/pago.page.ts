@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../../componentes/header/header.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pago',
@@ -25,7 +26,7 @@ import { HeaderComponent } from '../../componentes/header/header.component';
   ]
 })
 export class PagoPage {
-  reserva_id: string = '';
+  reserva: any = {};
   monto: number = 0;
   metodo_pago: string = '';
   estado_pago: string = 'pendiente';
@@ -41,7 +42,7 @@ export class PagoPage {
   usuario: any = null;
   vuelo: any = null;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
     const usuarioStr = localStorage.getItem('usuario');
     if (!usuarioStr) {
       alert('Debes iniciar sesión para acceder a la página de pago.');
@@ -61,6 +62,19 @@ export class PagoPage {
       estado: 'reservado',
       fecha_reserva: new Date().toISOString()
     };
+    this.route.queryParams.subscribe(params => {
+      this.reserva = {
+        reserva_id: params['reserva_id'],
+        nombre: params['nombre'],
+        vuelo_nombre: params['vuelo_nombre'],
+        fecha_reserva: params['fecha_reserva'],
+        asiento: params['asiento']
+      };
+    });
+    const fecha = new Date();
+    const fecha_pago = fecha.getDate().toString().padStart(2, '0') + '/' +
+                   (fecha.getMonth() + 1).toString().padStart(2, '0') + '/' +
+                   fecha.getFullYear();
   }
 
   realizarPago() {
@@ -102,8 +116,28 @@ export class PagoPage {
           this.http.post('http://localhost:3000/api/v1/viajes/pagos', pago)
             .subscribe({
               next: (resPago: any) => {
-                this.mensaje = '¡Reserva y pago realizados correctamente!';
-                setTimeout(() => this.router.navigate(['/mis-reservas']), 1500);
+                // NUEVO: Actualizar la reserva con los datos del pago
+                this.http.put(`http://localhost:3000/api/v1/viajes/reservas/${reserva_id}`, {
+                  ...reserva,
+                  pago: {
+                    monto: pago.monto,
+                    metodo_pago: pago.metodo_pago,
+                    estado_pago: pago.estado_pago,
+                    fecha_pago: pago.fecha_pago,
+                    nombre_titular: pago.nombre_titular,
+                    numero_tarjeta: pago.numero_tarjeta,
+                    caducidad_tarjeta: pago.caducidad_tarjeta,
+                    cvv_tarjeta: pago.cvv_tarjeta
+                  }
+                }).subscribe({
+                  next: () => {
+                    this.mensaje = '¡Reserva y pago realizados correctamente!';
+                    setTimeout(() => this.router.navigate(['/mis-reservas']), 1500);
+                  },
+                  error: (err) => {
+                    this.mensaje = 'Error al actualizar la reserva con los datos de pago: ' + (err.error?.message || err.message);
+                  }
+                });
               },
               error: (err) => {
                 this.mensaje = 'Error al realizar el pago: ' + (err.error?.message || err.message);

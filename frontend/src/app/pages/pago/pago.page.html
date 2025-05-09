@@ -29,34 +29,14 @@
         <div class="resumen-vuelo">
           <div class="resumen-header">
             <div>
-              <h2>Tu viaje a {{ vuelo?.destino || 'Destino' }}</h2>
+              <h2>Tu viaje a {{ reserva.vuelo_nombre || 'Destino' }}</h2>
               <span class="icon-avion">✈️</span>
             </div>
           </div>
           <div class="resumen-body">
-            <div class="vuelo-info">
-              <div class="vuelo-horario">
-                <div>
-                  <span class="hora">{{ vuelo?.horaSalida || '08:55' }}</span>
-                  <span class="ciudad">{{ vuelo?.origen || 'BCN' }}</span>
-                  <div class="fecha">{{ vuelo?.fechaSalida || 'Sab, 10 May' }}</div>
-                  <div class="aeropuerto">{{ vuelo?.aeropuertoOrigen || 'El Prat, Barcelona' }}</div>
-                </div>
-                <div class="trayecto">
-                  <span class="sin-escalas">Sin escalas</span>
-                </div>
-                <div>
-                  <span class="hora">{{ vuelo?.horaLlegada || '11:10' }}</span>
-                  <span class="ciudad">{{ vuelo?.destino || 'EIN' }}</span>
-                  <div class="fecha">{{ vuelo?.fechaLlegada || 'Sab, 10 May' }}</div>
-                  <div class="aeropuerto">{{ vuelo?.aeropuertoDestino || 'Welschap, Eindhoven' }}</div>
-                </div>
-              </div>
-              <div class="vuelo-extra">
-                <span class="duracion">{{ vuelo?.duracion || '2 h 15 min' }}</span>
-                <span class="atencion">⚠️ ¡Atención! Solo una maleta pequeña incluida</span>
-              </div>
-            </div>
+            <div><strong>Nombre:</strong> {{ reserva.nombre }}</div>
+            <div><strong>Fecha de reserva:</strong> {{ reserva.fecha_reserva }}</div>
+            <div><strong>Asiento:</strong> {{ reserva.asiento }}</div>
           </div>
         </div>
       </div>

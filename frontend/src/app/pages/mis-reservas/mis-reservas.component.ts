@@ -19,7 +19,8 @@ export class MisReservasComponent implements OnInit {
     const usuarioStr = localStorage.getItem('usuario');
     if (usuarioStr) {
       this.usuario = JSON.parse(usuarioStr);
-      this.reservasService.getReservasPorUsuario(this.usuario.nombre || this.usuario.email)
+      // Aquí deberías usar this.usuario._id si el backend espera el ID
+      this.reservasService.getReservasPorUsuario(this.usuario._id)
         .subscribe(res => this.reservas = res);
     }
   }

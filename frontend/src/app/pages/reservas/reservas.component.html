@@ -38,6 +38,9 @@
             <input type="text" id="asiento" name="asiento" [(ngModel)]="reserva.asiento" required readonly
               [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.asiento}">
           </div>
+          <div *ngIf="mensaje && reserva.estado === 'pago pendiente'">
+            <button class="reservar-btn" (click)="irAPago()">Pagar</button>
+          </div>
           <button type="submit" class="reservar-btn">Reservar</button>
           <button type="button" class="reservar-btn" (click)="volverAtras()">Volver</button>
         </form>

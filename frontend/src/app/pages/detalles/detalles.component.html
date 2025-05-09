@@ -56,10 +56,7 @@
               </div>
             </div>
           </ng-container>
-          <!-- Reemplaza este botón: -->
-          <!-- <button class="reservar-btn" [routerLink]="['/reservas']" [queryParams]="{ vuelo_id: vuelo._id, vuelo_nombre: vuelo.ida.aerolinea }">Reservar</button> -->
-          <!-- Por este: -->
-          <button class="reservar-btn" (click)="irAPago()">Reservar</button>
+          <button class="reservar-btn" [routerLink]="['/reservas']" [queryParams]="{ vuelo_id: vuelo._id }">Reservar</button>
           <button class="reservar-btn" (click)="volver()">Volver</button>
         </div>
         <ng-template #cargando>

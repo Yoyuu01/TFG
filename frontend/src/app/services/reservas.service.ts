@@ -2,23 +2,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class ReservasService {
-  private apiUrl = environment.apiUrl;
+  private apiUrl = 'http://localhost:3000/api/v1/viajes';
 
   constructor(private http: HttpClient) {}
 
-  getReservasPorUsuario(usuario_id: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/reservas/usuario/${usuario_id}`);
-  }
-
-  crearReserva(reserva: any) {
-    return this.http.post(`${this.apiUrl}/reservas`, reserva);
-  }
-
   existeAsiento(asiento: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/reservas/asiento/${asiento}`);
+    return this.http.get<boolean>(`${this.apiUrl}/reservas/existe-asiento/${asiento}`);
+  }
+
+  crearReserva(reserva: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/reservas`, reserva);
+  }
+
+  getReservasPorUsuario(usuario: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/reservas/usuario/${usuario}`);
   }
 }
