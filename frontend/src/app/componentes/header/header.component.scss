@@ -9,8 +9,9 @@ ion-header, ion-toolbar {
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
+  gap: 2rem;
 }
 
 .header-title-link {
@@ -18,14 +19,13 @@ ion-header, ion-toolbar {
   color: inherit;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 ion-title {
   font-size: 2rem;
   font-weight: bold;
   color: #eaf6fb;
-  margin-bottom: 0;
-  line-height: 1.1;
   display: flex;
   align-items: center;
   gap: 0.5em;
@@ -35,6 +35,7 @@ ion-title {
   display: flex;
   align-items: center;
   gap: 0.5em;
+  margin-left: auto;
 }
 
 ion-buttons {
@@ -65,10 +66,20 @@ ion-icon {
 }
 
 @media (max-width: 700px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2em;
+  }
+  .header-menu {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
   ion-title {
     font-size: 1.3rem;
   }
-  .header-menu, ion-buttons {
+  ion-buttons {
     gap: 0.2em;
   }
   ion-button {
@@ -96,4 +107,12 @@ ion-icon {
 ion-icon {
   font-size: 1.5em;
   color: #ffe082;
+}
+
+.bienvenida {
+  color: #ffe082;
+  font-weight: 600;
+  margin-right: 1em;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
 }

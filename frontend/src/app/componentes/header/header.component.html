@@ -9,14 +9,23 @@
       </a>
       <div class="header-menu">
         <ion-buttons>
-          <ion-button routerLink="/login">
-            <ion-icon slot="start" name="log-in-outline"></ion-icon>
-            Iniciar Sesión
-          </ion-button>
-          <ion-button routerLink="/register">
-            <ion-icon slot="start" name="person-add-outline"></ion-icon>
-            Registrarse
-          </ion-button>
+          <ng-container *ngIf="usuario; else noSesion">
+            <span class="bienvenida">¡Bienvenido{{ usuario?.nombre ? ', ' + usuario.nombre : '' }}!</span>
+            <ion-button (click)="cerrarSesion()">
+              <ion-icon slot="start" name="log-out-outline"></ion-icon>
+              Cerrar sesión
+            </ion-button>
+          </ng-container>
+          <ng-template #noSesion>
+            <ion-button routerLink="/login">
+              <ion-icon slot="start" name="log-in-outline"></ion-icon>
+              Iniciar Sesión
+            </ion-button>
+            <ion-button routerLink="/register">
+              <ion-icon slot="start" name="person-add-outline"></ion-icon>
+              Registrarse
+            </ion-button>
+          </ng-template>
         </ion-buttons>
       </div>
     </div>
