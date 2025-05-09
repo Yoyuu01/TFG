@@ -19,8 +19,8 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/register/register.page').then(m => m.RegisterPage)
   },
   {
-    path: 'reservas',
-    loadComponent: () => import('./pages/reservas/reservas.component').then(m => m.ReservasComponent)
+    path: 'mis-reservas',
+    loadComponent: () => import('./pages/mis-reservas/mis-reservas.component').then(m => m.MisReservasComponent)
   },
   {
     path: 'detalle-vuelo/:id',

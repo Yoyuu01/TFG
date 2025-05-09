@@ -45,4 +45,8 @@ export class HeaderComponent {
     this.usuario = null;
     this.router.navigate(['/login']);
   }
+
+  irAMisReservas() {
+    this.router.navigate(['/mis-reservas']);
+  }
 }

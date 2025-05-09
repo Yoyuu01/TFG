@@ -102,13 +102,30 @@ export class ReservasComponent implements OnInit {
     } while (existe);
     return asiento;
   }
+  
 
+  irAPago() {
+    this.router.navigate(['/pago'], {
+      queryParams: {
+        reserva_id: this.reserva.vuelo_id,
+        nombre: this.reserva.nombre,
+        vuelo_nombre: this.reserva.vuelo_nombre,
+        fecha_reserva: this.reserva.fecha_reserva,
+        asiento: this.reserva.asiento
+      }
+    });
+  }
+
+  getVueloDisplay(): string {
+    const vuelo = this.vuelos.find(v => v._id === this.reserva.vuelo_id);
+    return vuelo ? `${vuelo.ida.aerolinea} (${vuelo.origen} → ${vuelo.destino})` : '';
+  }
   crearReserva() {
-    // Comprobar si es la primera reserva del usuario
-    this.reservasService.getReservasPorUsuario(this.reserva.nombre).subscribe({
+    
+    this.reservasService.crearReserva(this.reserva.nombre).subscribe({
       next: (reservas: any[]) => {
         if (reservas.length === 0) {
-          // Es la primera reserva
+          
           this.mensaje = '¡Felicidades! Esta es tu primera reserva.';
         }
         const reservaData = { ...this.reserva };
@@ -117,9 +134,9 @@ export class ReservasComponent implements OnInit {
           this.reservasService.crearReserva(reservaDataWithoutNombre).subscribe({
             next: (res: any) => {
               this.mensaje += '\n¡Reserva creada correctamente!';
-              // Limpiar el asiento guardado solo si la reserva fue exitosa
+              
               localStorage.removeItem('asiento_reserva');
-              // Redirigir a la página de pago pasando el id de la reserva
+             
               const reservaId = res && res._id ? res._id : (res && res.id ? res.id : null);
               if (reservaId) {
                 this.irAPago();
@@ -137,22 +154,5 @@ export class ReservasComponent implements OnInit {
         this.mensaje = 'Error al comprobar reservas previas.';
       }
     });
-  }
-
-  irAPago() {
-    this.router.navigate(['/pago'], {
-      queryParams: {
-        reserva_id: this.reserva.vuelo_id,
-        nombre: this.reserva.nombre,
-        vuelo_nombre: this.reserva.vuelo_nombre,
-        fecha_reserva: this.reserva.fecha_reserva,
-        asiento: this.reserva.asiento
-      }
-    });
-  }
-
-  getVueloDisplay(): string {
-    const vuelo = this.vuelos.find(v => v._id === this.reserva.vuelo_id);
-    return vuelo ? `${vuelo.ida.aerolinea} (${vuelo.origen} → ${vuelo.destino})` : '';
   }
 }

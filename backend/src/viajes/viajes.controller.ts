@@ -267,6 +267,24 @@ export class ViajesController {
         }
     }
 
+    @Post('reservas/usuario')
+    async addReservaPorUsuario(@Body() reservaDto: reservasDto) {
+        try {
+            // Aquí podrías validar que el usuario existe si lo necesitas
+            const resp = await this.viajesService.addReserva(reservaDto);
+            return {
+                status: 'OK',
+                message: 'Reserva añadida correctamente para el usuario',
+            }
+        } catch (e: any) {
+            throw new BadRequestException(
+                {
+                    status: 'error',
+                    message: e.message,
+                })
+        }
+    }
+
     @Get('reservas')
     async getReservas() {
         try {
