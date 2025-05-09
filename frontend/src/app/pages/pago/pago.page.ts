@@ -59,25 +59,51 @@ export class PagoPage {
   }
 
   realizarPago() {
-    if (!this.reserva_id || !this.monto || !this.metodo_pago) {
-      this.mensaje = 'Por favor, rellena todos los campos obligatorios.';
+    // Validación de los campos de la tarjeta
+    if (!this.nombreTarjeta || !this.numeroTarjeta || !this.caducidadTarjeta || !this.cvvTarjeta) {
+      this.mensaje = 'Por favor, rellena todos los campos de la tarjeta.';
       return;
     }
-    const pago = {
-      reserva_id: this.reserva_id,
-      monto: this.monto,
-      metodo_pago: this.metodo_pago,
-      estado_pago: this.estado_pago,
-      fecha_pago: new Date().toISOString()
+
+    // Validación de datos de vuelo y usuario
+    if (!this.vuelo?.id || !this.usuario?.id) {
+      this.mensaje = 'Faltan datos del vuelo o del usuario.';
+      return;
+    }
+
+    // 1. Crear la reserva
+    const reserva = {
+      usuario_id: this.usuario.id,
+      vuelo_id: this.vuelo.id,
+      estado: 'reservado',
+      fecha_reserva: new Date().toISOString()
     };
-    this.http.post('http://localhost:3000/api/v1/viajes/pagos', pago)
+
+    this.http.post('http://localhost:3000/api/v1/viajes/reservas', reserva)
       .subscribe({
-        next: (res: any) => {
-          this.mensaje = '¡Pago realizado correctamente!';
-          setTimeout(() => this.router.navigate(['/mis-reservas']), 1500);
+        next: (resReserva: any) => {
+          // 2. Cuando la reserva se crea, hacer el pago
+          const reserva_id = resReserva.id || resReserva.reserva_id;
+          const pago = {
+            reserva_id: reserva_id,
+            monto: 100, // Puedes calcular el monto real según tu lógica
+            metodo_pago: 'tarjeta',
+            estado_pago: 'pendiente',
+            fecha_pago: new Date().toISOString()
+          };
+          this.http.post('http://localhost:3000/api/v1/viajes/pagos', pago)
+            .subscribe({
+              next: (resPago: any) => {
+                this.mensaje = '¡Reserva y pago realizados correctamente!';
+                setTimeout(() => this.router.navigate(['/mis-reservas']), 1500);
+              },
+              error: (err) => {
+                this.mensaje = 'Error al realizar el pago: ' + (err.error?.message || err.message);
+              }
+            });
         },
         error: (err) => {
-          this.mensaje = 'Error al realizar el pago: ' + (err.error?.message || err.message);
+          this.mensaje = 'Error al crear la reserva: ' + (err.error?.message || err.message);
         }
       });
   }
