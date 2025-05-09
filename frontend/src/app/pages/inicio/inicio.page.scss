@@ -408,6 +408,41 @@ body, ion-content {
   margin: 0 0.2rem;
 }
 
+.filtros-bar {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.filtro-aerolinea-externo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.filtro-aerolinea-externo label {
+  font-weight: bold;
+  color: #eaf6fb;
+  font-size: 1.1rem;
+}
+
+.filtro-aerolinea-externo select {
+  background: #181c24;
+  color: #eaf6fb;
+  border: 2px solid #3a7ca5;
+  border-radius: 8px;
+  padding: 6px 18px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.filtro-aerolinea-externo select:focus {
+  border-color: #ffd700;
+}
+
 .buscador-campo label {
   color: #6c8bbd;
   font-size: 0.95rem;

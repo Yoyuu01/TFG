@@ -3,7 +3,7 @@ import { ReservasService } from 'src/app/services/reservas.service';
 import { ViajesService, Vuelo } from 'src/app/services/viajes.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent } from '@ionic/angular/standalone';
+import { IonContent, IonIcon } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../componentes/header/header.component';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -17,7 +17,9 @@ import { Router } from '@angular/router';
     CommonModule,
     FormsModule,
     IonContent,
-    HeaderComponent
+    HeaderComponent,
+    IonIcon,
+    IonContent
   ]
 })
 export class ReservasComponent implements OnInit {

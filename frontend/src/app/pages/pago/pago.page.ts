@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonContent, IonInput, IonButton, IonItem, IonLabel, IonList } from '@ionic/angular/standalone';
+import { IonContent, IonInput, IonButton, IonItem, IonLabel, IonList, IonIcon } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -17,10 +17,9 @@ import { HeaderComponent } from '../../componentes/header/header.component';
     RouterModule,
     FormsModule,
     IonContent,
-    IonInput,
+    IonContent,
+    IonIcon,
     IonButton,
-    IonItem,
-    IonLabel,
     IonList,
     HeaderComponent
   ]
@@ -56,6 +55,12 @@ export class PagoPage {
     const vuelo_id = url.searchParams.get('vuelo_id');
     const vuelo_nombre = url.searchParams.get('vuelo_nombre');
     this.vuelo = { id: vuelo_id, nombre: vuelo_nombre };
+    const reserva = {
+      usuario_id: this.usuario.id,
+      vuelo_id: this.vuelo.id,
+      estado: 'reservado',
+      fecha_reserva: new Date().toISOString()
+    };
   }
 
   realizarPago() {

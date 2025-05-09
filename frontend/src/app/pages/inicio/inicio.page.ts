@@ -40,9 +40,26 @@ export class InicioPage {
   opiniones: Opinion[] = [];
   usuarios: Usuario[] = [];
   aerolineaSeleccionada: string = '';
+  origenSeleccionado: string = '';
+  destinoSeleccionado: string = '';
+  origenesDisponibles: string[] = [];
+  destinosDisponibles: string[] = [];
+  vuelosVisibles: number = 6; // Número de vuelos que se muestran inicialmente
+
   get vuelosFiltrados(): Vuelo[] {
-    if (!this.aerolineaSeleccionada) return this.vuelos;
-    return this.vuelos.filter(v => v.ida.aerolinea === this.aerolineaSeleccionada);
+    return this.vuelos.filter(v =>
+      (!this.aerolineaSeleccionada || v.ida.aerolinea === this.aerolineaSeleccionada) &&
+      (!this.origenSeleccionado || v.origen === this.origenSeleccionado) &&
+      (!this.destinoSeleccionado || v.destino === this.destinoSeleccionado)
+    );
+  }
+
+  get vuelosParaMostrar(): Vuelo[] {
+    return this.vuelosFiltrados.slice(0, this.vuelosVisibles);
+  }
+
+  cargarMasVuelos() {
+    this.vuelosVisibles += 6; // Puedes ajustar el número según prefieras
   }
   get aerolineasDisponibles(): string[] {
     // Devuelve un array único de aerolíneas disponibles
@@ -71,6 +88,9 @@ export class InicioPage {
       next: (res: any) => {
         if (res.data && res.data.length > 0) {
           this.vuelos = res.data;
+          // Llenar los arrays de filtros únicos
+          this.origenesDisponibles = [...new Set(this.vuelos.map(v => v.origen))];
+          this.destinosDisponibles = [...new Set(this.vuelos.map(v => v.destino))];
         }
       },
       error: (err) => {

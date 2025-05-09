@@ -6,18 +6,34 @@
       <p>Tu próxima aventura comienza aquí</p>
     </div>
 
-    <div class="filtro-aerolinea-externo">
-      <label for="filtroAerolinea">Filtrar por aerolínea:</label>
-      <select id="filtroAerolinea" [(ngModel)]="aerolineaSeleccionada">
-        <option value="">Todas</option>
-        <option *ngFor="let a of aerolineasDisponibles" [value]="a">{{ a }}</option>
-      </select>
+    <div class="filtros-bar">
+      <div class="filtro-aerolinea-externo">
+        <label for="filtroAerolinea">Filtrar por aerolínea:</label>
+        <select id="filtroAerolinea" [(ngModel)]="aerolineaSeleccionada">
+          <option value="">Todas</option>
+          <option *ngFor="let a of aerolineasDisponibles" [value]="a">{{ a }}</option>
+        </select>
+      </div>
+      <div class="filtro-aerolinea-externo">
+        <label for="filtroOrigen">Filtrar por origen:</label>
+        <select id="filtroOrigen" [(ngModel)]="origenSeleccionado">
+          <option value="">Todos</option>
+          <option *ngFor="let o of origenesDisponibles" [value]="o">{{ o }}</option>
+        </select>
+      </div>
+      <div class="filtro-aerolinea-externo">
+        <label for="filtroDestino">Filtrar por destino:</label>
+        <select id="filtroDestino" [(ngModel)]="destinoSeleccionado">
+          <option value="">Todos</option>
+          <option *ngFor="let d of destinosDisponibles" [value]="d">{{ d }}</option>
+        </select>
+      </div>
     </div>
 
     <h2 class="titulo-vuelos">Vuelos disponibles</h2>
     @if (vuelosFiltrados.length > 0) {
       <div class="vuelos-grid">
-        <div *ngFor="let v of vuelosFiltrados" class="viaje-card flight-card">
+        <div *ngFor="let v of vuelosParaMostrar" class="viaje-card flight-card">
           <div class="flight-airline">
             <span>{{ v.ida.aerolinea }}</span>
           </div>
@@ -36,6 +52,11 @@
             Ver detalles
           </button>
         </div>
+      </div>
+      <div style="text-align:center; margin-top:1.5rem;" *ngIf="vuelosVisibles < vuelosFiltrados.length">
+        <button class="ver-vuelo-btn bonito" (click)="cargarMasVuelos()">
+          Cargar más vuelos
+        </button>
       </div>
     } @else {
       <div class="viaje-card">

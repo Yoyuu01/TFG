@@ -8,7 +8,8 @@ import {
   IonButton, 
   IonItem, 
   IonLabel, 
-  IonList
+  IonList,
+  IonIcon
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -36,11 +37,12 @@ import { HeaderComponent } from '../../componentes/header/header.component';
     RouterModule,
     FormsModule,
     IonContent,
-    IonInput,
-    IonButton,
+    IonList,
     IonItem,
     IonLabel,
-    IonList,
+    IonInput,
+    IonButton,
+    IonIcon,
     HeaderComponent
   ]
 })

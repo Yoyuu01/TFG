@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonContent, IonInput, IonButton, IonItem, IonLabel, IonList } from '@ionic/angular/standalone';
+import { IonContent, IonInput, IonButton, IonItem,IonIcon, IonLabel, IonList } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -20,6 +20,8 @@ import { HeaderComponent } from '../../componentes/header/header.component';
     IonInput,
     IonButton,
     IonItem,
+    IonIcon,
+    IonContent,
     IonLabel,
     IonList,
     HeaderComponent
