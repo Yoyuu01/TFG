@@ -24,7 +24,7 @@ import { Router } from '@angular/router';
 })
 export class ReservasComponent implements OnInit {
   reserva = {
-    nombre: '',
+    usuario_id: '',
     vuelo_id: '',
     vuelo_nombre: '',
     fecha_reserva: '',
@@ -108,7 +108,7 @@ export class ReservasComponent implements OnInit {
     this.router.navigate(['/pago'], {
       queryParams: {
         reserva_id: this.reserva.vuelo_id,
-        nombre: this.reserva.nombre,
+        nombre: this.reserva.usuario_id,
         vuelo_nombre: this.reserva.vuelo_nombre,
         fecha_reserva: this.reserva.fecha_reserva,
         asiento: this.reserva.asiento
@@ -121,37 +121,21 @@ export class ReservasComponent implements OnInit {
     return vuelo ? `${vuelo.ida.aerolinea} (${vuelo.origen} → ${vuelo.destino})` : '';
   }
   crearReserva() {
-    
-    this.reservasService.crearReserva(this.reserva.nombre).subscribe({
-      next: (reservas: any[]) => {
-        if (reservas.length === 0) {
-          
-          this.mensaje = '¡Felicidades! Esta es tu primera reserva.';
-        }
-        const reservaData = { ...this.reserva };
-        const { vuelo_nombre, ...reservaDataWithoutNombre } = reservaData;
-        if (this.reservasService.crearReserva) {
-          this.reservasService.crearReserva(reservaDataWithoutNombre).subscribe({
-            next: (res: any) => {
-              this.mensaje += '\n¡Reserva creada correctamente!';
-              
-              localStorage.removeItem('asiento_reserva');
-             
-              const reservaId = res && res._id ? res._id : (res && res.id ? res.id : null);
-              if (reservaId) {
-                this.irAPago();
-              }
-            },
-            error: () => {
-              this.mensaje = 'Error al crear la reserva. Inténtalo de nuevo.';
-            }
-          });
-        } else {
-          this.mensaje = 'Error: crearReserva no está implementado en el servicio.';
-        }
+    const usuarioStr = localStorage.getItem('usuario');
+    if (usuarioStr) {
+      const usuario = JSON.parse(usuarioStr);
+      this.reserva.usuario_id = usuario._id; // Asegúrate de que el backend espera _id
+    }
+    // Elimina campos innecesarios si es necesario
+    const { vuelo_nombre, ...reservaData } = this.reserva;
+    this.reservasService.crearReserva(reservaData).subscribe({
+      next: (res: any) => {
+        this.mensaje = '¡Reserva creada correctamente!';
+        localStorage.removeItem('asiento_reserva');
+        this.irAPago();
       },
       error: () => {
-        this.mensaje = 'Error al comprobar reservas previas.';
+        this.mensaje = 'Error al crear la reserva. Inténtalo de nuevo.';
       }
     });
   }

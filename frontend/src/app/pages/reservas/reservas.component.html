@@ -10,18 +10,17 @@
         <form (ngSubmit)="crearReserva()" #reservaForm="ngForm" class="reserva-form" novalidate>
           <div class="form-group">
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" [(ngModel)]="reserva.nombre" required
-              [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.nombre}">
+            <input type="text" id="nombre" name="nombre" [(ngModel)]="reserva.usuario_id" required
+              [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.usuario_id}">
           </div>
           <div class="form-group">
-            <label for="vuelo_nombre">Vuelo:</label>
-            <input type="text" id="vuelo_nombre" name="vuelo_nombre" [value]="getVueloDisplay()" disabled
+            <label for="vuelo_id">Vuelo:</label>
+            <input type="text" id="vuelo_id" name="vuelo_id" [(ngModel)]="reserva.vuelo_id" required readonly
               [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.vuelo_id}">
           </div>
           <div class="form-group">
             <label for="vuelo_nombre">Aerolínea seleccionada:</label>
-            <input type="text" id="aerolinea" name="aerolinea" [value]="reserva.vuelo_nombre" disabled
-              [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.vuelo_nombre}">
+            <input type="text" id="vuelo_nombre" name="vuelo_nombre" [(ngModel)]="reserva.vuelo_nombre" readonly>
           </div>
           <div class="form-group">
             <label for="fecha_reserva">Fecha de reserva:</label>
@@ -30,7 +29,7 @@
           </div>
           <div class="form-group">
             <label for="estado">Estado:</label>
-            <input type="text" id="estado" name="estado" [(ngModel)]="reserva.estado" disabled
+            <input type="text" id="estado" name="estado" [(ngModel)]="reserva.estado" required readonly
               [ngClass]="{'campo-invalido': reservaForm.submitted && !reserva.estado}">
           </div>
           <div class="form-group">

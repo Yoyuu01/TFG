@@ -23,6 +23,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/mis-reservas/mis-reservas.component').then(m => m.MisReservasComponent)
   },
   {
+    path: 'reservas',
+    loadComponent: () => import('./pages/reservas/reservas.component').then(m => m.ReservasComponent)
+  },
+  {
     path: 'detalle-vuelo/:id',
     loadComponent: () => import('./pages/detalles/detalles.component').then(m => m.DetallesComponent),
   },

@@ -1,7 +1,7 @@
 export interface reservasInterface {
     _id: string;
-    usuario: string;
-    vuelo: string;
+    usuario_id: string;
+    vuelo_id: string;
     fecha_reserva: string;
     estado: string;
     asiento: string;
