@@ -1,5 +1,5 @@
 body, ion-content {
-  background: linear-gradient(135deg, #0a2342 0%, #2e4a62 100%);
+  background: linear-gradient(135deg, #0a2342 0%, #181c24 100%);
   min-height: 100vh;
 }
 
@@ -23,28 +23,110 @@ body, ion-content {
   }
 }
 
-.pago-container {
-  max-width: 380px;
-  margin: 48px auto;
-  padding: 32px 24px;
-  border-radius: 24px;
-  background: rgba(20, 24, 36, 0.97);
-  box-shadow: 0 8px 32px rgba(10, 35, 66, 0.18);
-  border: 1.5px solid #23395d;
-  animation: fadeInDown 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  transition: box-shadow 0.3s;
+.pago-container,
+.resumen-vuelo {
+  background: #232733;
+  border-radius: 20px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  padding: 2.5rem 2rem;
+  margin: 2rem auto;
+  max-width: 900px; // Aumenta el ancho máximo aquí
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-ion-list, ion-item {
-  background: transparent !important;
+.resumen-vuelo {
+  color: #eaf6fb;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #181c24;
+}
+
+.pago-container {
+  background: #232733;
+}
+
+.pago-container h3 {
+  color: #ffd700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.pago-form-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 24px;
+  margin-bottom: 1.5rem;
 }
 
 ion-item {
-  border-radius: 10px;
-  margin-bottom: 18px;
-  border: 1px solid #23395d;
+  border-radius: 16px;
+  border: 3px solid #3a7ca5;
+  background: #181c24 !important;
+  margin-bottom: 0;
   transition: border-color 0.3s;
-  background: rgba(35, 57, 93, 0.18) !important;
+  box-shadow: 0 2px 8px rgba(35, 57, 93, 0.22);
+  min-height: 80px;
+  padding: 12px 18px;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+ion-label {
+  color: #eaf6fb;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 1.25rem;
+  padding-left: 4px;
+}
+
+ion-input {
+  color: #eaf6fb;
+  font-size: 1.35rem;
+  background: transparent;
+  padding: 14px 8px;
+  min-height: 48px;
+}
+
+@media (max-width: 700px) {
+  .pago-container,
+  .resumen-vuelo {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem;
+  }
+  .pago-form-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .pago-form-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+ion-list.pago-form-list {
+  background: transparent !important;
+  padding: 0;
+}
+
+ion-item {
+  border-radius: 14px;
+  border: 3px solid #23395d;
+  background: #181c24 !important;
+  margin-bottom: 0;
+  transition: border-color 0.3s;
+  box-shadow: 0 2px 8px rgba(35, 57, 93, 0.22);
+  min-height: 72px;
+  padding: 8px 12px;
 }
 
 ion-label {
@@ -55,10 +137,12 @@ ion-label {
 
 ion-input {
   color: #eaf6fb;
+  font-size: 1.08rem;
+  background: transparent;
 }
 
 .pago-btn {
-  margin-top: 28px;
+  margin-top: 18px;
   border-radius: 10px;
   background: linear-gradient(90deg, #3a7ca5 0%, #274472 100%);
   color: #fff;
@@ -67,6 +151,8 @@ ion-input {
   box-shadow: 0 2px 8px rgba(42, 92, 160, 0.12);
   transition: background 0.3s, transform 0.2s;
   animation: fadeInUp 0.7s 0.2s backwards;
+  width: 100%;
+  font-size: 1.1rem;
 }
 
 .pago-btn:hover {
@@ -79,4 +165,220 @@ ion-input {
   color: #4f8cff;
   font-weight: 700;
   text-align: center;
+  font-size: 1.1rem;
+}
+
+.resumen-vuelo {
+  background: #181c24;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  padding: 1.5rem 2rem;
+  margin: 2rem auto 1.5rem auto;
+  max-width: 700px;
+  color: #eaf6fb;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.resumen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    display: inline-block;
+    color: #fff;
+  }
+  .icon-avion {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+}
+
+.resumen-body {
+  .vuelo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .vuelo-horario {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    .hora {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffd700;
+    }
+    .ciudad {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-left: 0.3rem;
+      color: #4f8cff;
+    }
+    .fecha, .aeropuerto {
+      font-size: 0.95rem;
+      color: #b0b8c1;
+    }
+    .trayecto {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .sin-escalas {
+        color: #1abc9c;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+  .vuelo-extra {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    .duracion {
+      font-weight: 600;
+      color: #ffd700;
+    }
+    .atencion {
+      color: #e67e22;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 1rem;
+    }
+  }
+}
+
+.tarjeta-visual {
+  width: 100%;
+  max-width: 700px;
+  min-width: 320px;
+  height: 100%;
+  min-height: 230px;
+  background: linear-gradient(135deg, #232733 60%, #181c24 100%);
+  border-radius: 20px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  margin: 0 auto 2rem auto;
+  padding: 2.5rem 2rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+@media (max-width: 700px) {
+  .tarjeta-visual {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem;
+    height: auto;
+  }
+}.tarjeta-chip {
+  width: 48px;
+  height: 32px;
+  background: linear-gradient(90deg, #ffd700 60%, #bfa100 100%);
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+}
+
+.tarjeta-numero {
+  font-size: 1.4rem;
+  letter-spacing: 2.5px;
+  font-family: 'Courier New', Courier, monospace;
+  margin-bottom: 1.2rem;
+  color: #eaf6fb;
+}
+
+.tarjeta-datos.fila {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  gap: 10px;
+}
+
+.tarjeta-datos.fila > div {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: left;
+}
+
+.tarjeta-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #ffd700;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 0.2rem;
+}
+
+.tarjeta-titular,
+.tarjeta-caducidad,
+.tarjeta-cvv {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  margin-top: 0.1rem;
+  word-break: break-all;
+}
+
+@media (max-width: 500px) {
+  .tarjeta-visual {
+    width: 98vw;
+    min-width: 0;
+    padding: 1rem 0.5rem;
+  }
+}
+
+.pago-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.pago-col-izq {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1 1 0;
+  min-width: 370px;
+  max-width: 420px;
+}
+
+.pago-col-der {
+  flex: 1 1 0;
+  min-width: 370px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 1100px) {
+  .pago-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .pago-col-izq, .pago-col-der {
+    max-width: 98vw;
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.tarjeta-visual {
+  margin-bottom: 0;
 }

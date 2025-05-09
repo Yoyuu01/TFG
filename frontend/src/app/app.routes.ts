@@ -27,6 +27,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/detalles/detalles.component').then(m => m.DetallesComponent),
   },
   {
+    path: 'pago',
+    loadComponent: () => import('./pages/pago/pago.page').then(m => m.PagoPage)
+  },
+  {
     path: '',
     redirectTo: 'inicio',
     pathMatch: 'full',

@@ -64,4 +64,20 @@ export class DetallesComponent implements OnInit {
   reservar() {
     this.router.navigate(['/reservas']);
   }
+
+  irAPago() {
+    const usuario = localStorage.getItem('usuario');
+    if (!usuario) {
+      alert('Debes iniciar sesión para reservar. Serás redirigido al login.');
+      this.router.navigate(['/login']);
+      return;
+    }
+    // Aquí puedes pasar parámetros si lo necesitas
+    this.router.navigate(['/pago'], {
+      queryParams: {
+        vuelo_id: this.vuelo?._id,
+        vuelo_nombre: this.vuelo?.ida?.aerolinea
+      }
+    });
+  }
 }

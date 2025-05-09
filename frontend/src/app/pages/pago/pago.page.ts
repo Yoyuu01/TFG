@@ -33,7 +33,30 @@ export class PagoPage {
   fecha_pago: string = '';
   mensaje: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  // Añade estas propiedades para el formulario de tarjeta
+  nombreTarjeta: string = '';
+  numeroTarjeta: string = '';
+  caducidadTarjeta: string = '';
+  cvvTarjeta: string = '';
+
+  usuario: any = null;
+  vuelo: any = null;
+
+  constructor(private http: HttpClient, private router: Router) {
+    const usuarioStr = localStorage.getItem('usuario');
+    if (!usuarioStr) {
+      alert('Debes iniciar sesión para acceder a la página de pago.');
+      this.router.navigate(['/login']);
+      return;
+    }
+    this.usuario = JSON.parse(usuarioStr);
+
+    // Obtener datos del vuelo desde queryParams
+    const url = new URL(window.location.href);
+    const vuelo_id = url.searchParams.get('vuelo_id');
+    const vuelo_nombre = url.searchParams.get('vuelo_nombre');
+    this.vuelo = { id: vuelo_id, nombre: vuelo_nombre };
+  }
 
   realizarPago() {
     if (!this.reserva_id || !this.monto || !this.metodo_pago) {
@@ -57,5 +80,11 @@ export class PagoPage {
           this.mensaje = 'Error al realizar el pago: ' + (err.error?.message || err.message);
         }
       });
+  }
+
+  getNumeroTarjetaFormateado(): string {
+    if (!this.numeroTarjeta) return '••••-••••-••••-••••';
+    // Elimina espacios o guiones previos y agrupa en bloques de 4
+    return this.numeroTarjeta.replace(/\D/g, '').replace(/(.{4})/g, '$1-').replace(/-$/, '');
   }
 }

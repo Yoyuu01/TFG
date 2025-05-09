@@ -5,23 +5,93 @@
       <h1>Pagar reserva</h1>
       <p>Introduce los datos de tu pago para completar la reserva</p>
     </div>
-    <div class="pago-container">
-      <ion-list>
-        <ion-item>
-          <ion-label position="floating">ID de reserva</ion-label>
-          <ion-input type="text" [(ngModel)]="reserva_id" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Monto (€)</ion-label>
-          <ion-input type="number" [(ngModel)]="monto" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Método de pago</ion-label>
-          <ion-input type="text" [(ngModel)]="metodo_pago" required></ion-input>
-        </ion-item>
-      </ion-list>
-      <ion-button expand="block" class="pago-btn" (click)="realizarPago()">Pagar</ion-button>
-      <div *ngIf="mensaje" class="mensaje-pago">{{ mensaje }}</div>
+
+    <div class="pago-layout">
+      <div class="pago-col-izq">
+        <div class="tarjeta-visual">
+          <div class="tarjeta-chip"></div>
+          <div class="tarjeta-numero">{{ getNumeroTarjetaFormateado() }}</div>
+          <div class="tarjeta-datos fila">
+            <div>
+              <span class="tarjeta-label">Titular</span>
+              <span class="tarjeta-titular">{{ nombreTarjeta || 'NOMBRE Y APELLIDO' }}</span>
+            </div>
+            <div>
+              <span class="tarjeta-label">Caduca</span>
+              <span class="tarjeta-caducidad">{{ caducidadTarjeta || 'MM/AA' }}</span>
+            </div>
+            <div>
+              <span class="tarjeta-label">CVV</span>
+              <span class="tarjeta-cvv">{{ cvvTarjeta ? '•••' : '•••' }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="resumen-vuelo">
+          <div class="resumen-header">
+            <div>
+              <h2>Tu viaje a {{ vuelo?.destino || 'Destino' }}</h2>
+              <span class="icon-avion">✈️</span>
+            </div>
+          </div>
+          <div class="resumen-body">
+            <div class="vuelo-info">
+              <div class="vuelo-horario">
+                <div>
+                  <span class="hora">{{ vuelo?.horaSalida || '08:55' }}</span>
+                  <span class="ciudad">{{ vuelo?.origen || 'BCN' }}</span>
+                  <div class="fecha">{{ vuelo?.fechaSalida || 'Sab, 10 May' }}</div>
+                  <div class="aeropuerto">{{ vuelo?.aeropuertoOrigen || 'El Prat, Barcelona' }}</div>
+                </div>
+                <div class="trayecto">
+                  <span class="sin-escalas">Sin escalas</span>
+                </div>
+                <div>
+                  <span class="hora">{{ vuelo?.horaLlegada || '11:10' }}</span>
+                  <span class="ciudad">{{ vuelo?.destino || 'EIN' }}</span>
+                  <div class="fecha">{{ vuelo?.fechaLlegada || 'Sab, 10 May' }}</div>
+                  <div class="aeropuerto">{{ vuelo?.aeropuertoDestino || 'Welschap, Eindhoven' }}</div>
+                </div>
+              </div>
+              <div class="vuelo-extra">
+                <span class="duracion">{{ vuelo?.duracion || '2 h 15 min' }}</span>
+                <span class="atencion">⚠️ ¡Atención! Solo una maleta pequeña incluida</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pago-col-der">
+        <div class="pago-container">
+          <h3>Datos de pago</h3>
+          <ion-list class="pago-form-list">
+            <ion-item>
+              <ion-label position="floating">Nombre en la tarjeta</ion-label>
+              <ion-input type="text" [(ngModel)]="nombreTarjeta" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Número de tarjeta</ion-label>
+              <ion-input
+                type="tel"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                maxlength="16"
+                [(ngModel)]="numeroTarjeta"
+                required>
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Fecha de caducidad</ion-label>
+              <ion-input type="text" maxlength="5" placeholder="MM/AA" [(ngModel)]="caducidadTarjeta" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">CVV</ion-label>
+              <ion-input type="password" maxlength="4" [(ngModel)]="cvvTarjeta" required></ion-input>
+            </ion-item>
+          </ion-list>
+          <ion-button expand="block" class="pago-btn" (click)="realizarPago()">Pagar</ion-button>
+          <div *ngIf="mensaje" class="mensaje-pago">{{ mensaje }}</div>
+        </div>
+      </div>
     </div>
   </ion-content>
 </div>
